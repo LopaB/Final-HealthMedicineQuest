@@ -25,6 +25,7 @@ public class HibernateConfig {
 	public static final String DATABASE_USERNAME="sa2";
 	public static final String DATABASE_PASSWORD="";
 	
+	
 	@Bean
 	public DataSource getDataSource(){
 		BasicDataSource dataSource=new BasicDataSource();
@@ -44,7 +45,7 @@ public class HibernateConfig {
 		return builder.buildSessionFactory();
 	}
 	//All the hibernate properties will be returned by this method
-	private Properties getHibernateProperties(){
+	public Properties getHibernateProperties(){
 		Properties prop=new Properties();
 		prop.put("hibernate.dialect", DATABASE_DIALECT);
 		prop.put("hibernate.show_sql", "true");
