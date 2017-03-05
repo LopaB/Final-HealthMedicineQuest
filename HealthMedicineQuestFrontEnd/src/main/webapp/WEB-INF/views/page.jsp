@@ -26,6 +26,7 @@
 <script language="JavaScript" type="text/javascript"  src="${js}/jquery.dataTables.min.js"></script>
 <script language="JavaScript" type="text/javascript"  src="${js}/bootstrap.min.js"></script>
 <script language="JavaScript" type="text/javascript"  src="${js}/datatableScript.js"></script>
+<script language="JavaScript" type="text/javascript"  src="${js}/productcrud.js"></script>
 <script language="JavaScript" type="text/javascript"  src="${js}/dataTables.bootstrap.min.js"></script>
 
 <!-- Self coded js file -->
@@ -99,10 +100,24 @@
     		<c:if test="${userClickContact==true}">
     			<%@include file="contact.jsp" %>
     		</c:if>
-    		<!-- Loading only when user clicks contact -->
+    		<!-- Loading only when user clicks product -->
     		<c:if test="${userClickProducts==true}">
     			<%@include file="products.jsp" %>
     		</c:if>
+    		<!-- Loading only when user clicks login -->
+    		<c:if test="${userClickLogin==true}">
+    			<%@include file="login.jsp" %>
+    		</c:if>
+    		<!-- Loading only when user clicks register -->
+    		<c:if test="${userClickRegister==true}">
+    			<%@include file="register.jsp" %>
+    		</c:if>
+    		<!-- Loading only when user clicks register -->
+    		<c:if test="${userClickProductCRUD==true}">
+    			<%@include file="productCRUD.jsp" %>
+    		</c:if>
+    		
+    		
     	</div>
     	
  		<hr />

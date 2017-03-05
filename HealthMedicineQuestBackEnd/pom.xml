@@ -19,6 +19,7 @@
 		<dbcp2.version>2.1.1</dbcp2.version>
 		<h2database.version>1.4.191</h2database.version>
 		<hibernate.version>5.2.5.Final</hibernate.version>
+		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
 	</properties>
 	<!-- Dependency List -->
 	<dependencies>
@@ -93,7 +94,12 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>	
-
+	 <!-- Hibernate validator -->
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+       	<artifactId>hibernate-validator</artifactId>
+        <version>${hibernate.validator.version}</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>

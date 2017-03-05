@@ -12,6 +12,7 @@
 		<javaee.version>7.0</javaee.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
+		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
 	</properties>
   <dependencies>
   	<!-- Linking Backend project -->
@@ -48,6 +49,12 @@
     	<artifactId>jstl</artifactId>
     	<version>${jstl.version}</version>
     </dependency>
+    <!-- Hibernate validator -->
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+       	<artifactId>hibernate-validator</artifactId>
+        <version>${hibernate.validator.version}</version>
+        </dependency>
     
   </dependencies>
   <build>

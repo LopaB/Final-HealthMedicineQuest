@@ -13,31 +13,45 @@ import com.health.HealthMedicineQuestBackEnd.dao.IProductDAO;
 import com.health.HealthMedicineQuestBackEnd.model.Product;
 
 @Repository("productDAO")
-@Transactional(propagation=Propagation.SUPPORTS, readOnly=false)
-public class ProductDAOImpl implements IProductDAO{
+@Transactional
+public class ProductDAOImpl implements IProductDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
 	public List<Product> getAllProducts() {
-		return sessionFactory.openSession().createQuery("from Product", Product.class).getResultList();
+		return sessionFactory.getCurrentSession().createQuery("from Product", Product.class).getResultList();
 	}
-	
-	 public Product getProduct(int id){ 
-		 List<Product> prod =new ArrayList<Product>();
-		 prod=getAllProducts();
-		 return prod.get(id);
-		  
-	 }
-	 
-	 public boolean addProducts(Product p)
-	 {	try{
-		 			sessionFactory.openSession().persist(p);
-		 			return true;
-		 	}
-		 	catch(Exception e){
-		 		e.printStackTrace();
-		 		return false;
-		 	}
-	 }
-}
 
+	public Product getProduct(int id) {
+		return sessionFactory.getCurrentSession().get(Product.class,Integer.valueOf(id));
+
+	}
+
+	public boolean addProducts(Product p) {
+		try {
+			sessionFactory.getCurrentSession().persist(p);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean updateProducts(Product p){
+		try {
+			sessionFactory.getCurrentSession().update(p);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean deleteProducts(int productId){
+		try {
+			sessionFactory.getCurrentSession().delete(getProduct(productId));
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+}

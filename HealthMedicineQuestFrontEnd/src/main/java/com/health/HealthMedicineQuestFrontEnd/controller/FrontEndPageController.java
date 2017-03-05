@@ -36,4 +36,20 @@ public class FrontEndPageController {
 		model.addObject("userClickContact","true");
 		return model;
 	}
+	@RequestMapping(value={"login"})
+	public ModelAndView login(){
+		ModelAndView model =new ModelAndView("page");
+		model.addObject("title","Login");
+		model.addObject("userClickLogin","true");
+		return model;
+	}
+	@RequestMapping(value={"register"})
+	public ModelAndView register(){
+		ModelAndView model =new ModelAndView("page");
+		model.addObject("title","Register");
+		model.addObject("userClickRegister","true");
+		return model;
+	}
+	
+	
 }

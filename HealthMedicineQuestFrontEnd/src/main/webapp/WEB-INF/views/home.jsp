@@ -13,6 +13,7 @@
                         <li data-target="#myCarousel" data-slide-to="1" class=""></li>
                         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
                         <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="4" class=""></li>
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="item">
@@ -22,7 +23,7 @@
                             <img class="second-slide" src="${images}/2.jpg" alt="Second slide" style="border-radius: 25px; overflow: hidden;">
                             
                         </div>
-                        <div class="item ">
+                        <div class="item">
                             <img class="third-slide" src="${images}/3.jpg" alt="Third slide" style="border-radius: 25px; overflow: hidden;">
                             
                         </div>
@@ -30,7 +31,10 @@
                             <img class="third-slide" src="${images}/4.jpg" alt="Fourth slide" style="border-radius: 25px; overflow: hidden;">
                             
                         </div>
-                       
+                       <div class="item">
+                            <img class="third-slide" src="${images}/5.jpg" alt="Fifth slide" style="border-radius: 25px; overflow: hidden;">
+                            
+                        </div>
                     </div>
                     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

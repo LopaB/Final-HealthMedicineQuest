@@ -13,7 +13,7 @@ import com.health.HealthMedicineQuestBackEnd.model.Product;
 public class ProductsTestCase {
 	private static AnnotationConfigApplicationContext context;
 	private static IProductDAO productDAO;
-	private static Product product;
+	private Product product;
 	
 	@BeforeClass
 	public static void init(){
@@ -25,7 +25,7 @@ public class ProductsTestCase {
 		
 	}
 	
-	@Test
+/*	@Test
 	public void testAddProducts(){
 		product=new Product();
 		product.setProductName("SBL Homeocal Tabs (25g)");
@@ -35,4 +35,16 @@ public class ProductsTestCase {
 		product.setImageUrl("HomeoCal.jpg");
 		assertEquals("Successfully added a product inside the table!", true, productDAO.addProducts(product));
 	}
+*/
+
+
+	@Test
+	public void testGetProduct(){
+		product=productDAO.getProduct(1);
+		assertEquals("Successfully added a product inside the table!", "SBL Homeocal Tabs (25g)", product.getProductName());
+	}
+
+
+
+
 }

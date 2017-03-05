@@ -12,6 +12,7 @@
                 <li id="home"><a href="${contextRoot}/home"><span class="glyphicon glyphicon-home" style="font-size:12pt;"></span> Home</a></li>
                 <li id="contact"><a href="${contextRoot}/contact"><span class="	glyphicon glyphicon-earphone" style="font-size:12pt;"></span> Contact Us</a></li>
                 <li id="about"><a href="${contextRoot}/about"><span class="glyphicon glyphicon-info-sign" style="font-size:12pt;"></span> About Us</a></li>
+                 <li id="productscrud"><a href="${contextRoot}/productCRUD"><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> Product Management</a></li>
                 <li id="products"><a href="${contextRoot}/products"><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> View All Products</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

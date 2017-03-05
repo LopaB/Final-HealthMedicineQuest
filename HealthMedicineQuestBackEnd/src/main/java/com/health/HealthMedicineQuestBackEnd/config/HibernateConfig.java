@@ -49,6 +49,7 @@ public class HibernateConfig {
 		Properties prop=new Properties();
 		prop.put("hibernate.dialect", DATABASE_DIALECT);
 		prop.put("hibernate.show_sql", "true");
+		prop.put("hibernate.hbm2ddl.auto", "update");
 		prop.put("hibernate.format_sql", "true");
 		return prop;
 	}

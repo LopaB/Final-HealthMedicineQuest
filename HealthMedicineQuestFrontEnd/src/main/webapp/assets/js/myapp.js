@@ -19,5 +19,8 @@ $(function(){
 		case 'Register':
 			$('#register').addClass('Active');
 			break;
+		case 'ProductCRUD':
+			$('#productcrud').addClass('Active');
+			break;
 	}
 });
