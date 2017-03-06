@@ -1,12 +1,13 @@
 package com.health.HealthMedicineQuestFrontEnd.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.health.HealthMedicineQuestBackEnd.dao.IProductDAO;
@@ -23,6 +25,8 @@ import com.health.HealthMedicineQuestBackEnd.model.Product;
 public class FrontEndProductController {
 	@Autowired
 	private IProductDAO productDAO;
+	@Autowired
+	HttpServletRequest request;
 	
 	@RequestMapping(value={"products"})
 	public ModelAndView products(){
@@ -56,11 +60,24 @@ public class FrontEndProductController {
 		return model;
 	}
 	
+	
 	@RequestMapping(value="/productData.do", method=RequestMethod.POST)
-	private String doActions(@Valid Product productV, @ModelAttribute("product") Product product, BindingResult result, @RequestParam String action, Model model) {
+	private ModelAndView doActions(@ModelAttribute("product") @Valid Product product,BindingResult result, @RequestParam String action) {
+		
 		Product productResult=new Product();
+		 if(result.hasErrors()) {
+			 ModelAndView model1 =new ModelAndView("page");
+				model1.addObject("title","Product Management");
+				model1.addObject("userClickProductCRUD","true");
+             return model1;
+     }
+		
 		switch(action.toLowerCase()){
 			case "add":
+				if(!(product.getFile().getOriginalFilename().equals(""))){
+					product.setImageUrl(uploadImage(product.getFile()));
+				}
+				System.out.println("Image uploaded");
 				productDAO.addProducts(product);
 				productResult=product;
 				break;
@@ -77,9 +94,30 @@ public class FrontEndProductController {
 				productResult=searchedProduct!=null?searchedProduct:new Product();
 				break;
 		}
-		model.addAttribute("product", productResult);
-		model.addAttribute("productList",productDAO.getAllProducts());
-		return "redirect:productCRUD";
+		ModelAndView model1 =new ModelAndView("page");
+		model1.addObject("title","Product Management");
+		model1.addObject("userClickProductCRUD","true");
+		model1.addObject("product", productResult);
+		model1.addObject("productList",productDAO.getAllProducts());
+		return model1;
+	}
+	protected String uploadImage(MultipartFile multipart){
+		System.out.println("Method reached");
+		String folderToUpload="/resources/images/";
+		String fileName=multipart.getOriginalFilename();
+		String realPath=request.getServletContext().getRealPath(folderToUpload);
+		if(!new File(realPath).exists()){
+			new File(realPath).mkdirs();
+		}
+		String filePath=realPath+fileName;
+		File destination=new File(filePath);
+		try{
+			multipart.transferTo(destination);
+		}
+		catch(Exception e){
+			
+		}
+		return fileName;
 	}
 
 }

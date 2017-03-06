@@ -1,34 +1,48 @@
 package com.health.HealthMedicineQuestBackEnd.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 
-public class Product {
+public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//for autonumber
 	int productId;
-	@NotBlank
-	@Size(min=3)
+	@NotBlank(message="Can not leave this field witout entering any Product Name")
+	@Size(min=3,message="Product Name must be greater than 3 character")
 	String productName;
-	@NotEmpty
-	@Size(min=10)
+	@NotEmpty(message="Can not leave this field witout entering any Product Description")
+	@Size(min=10, message="Product Name must be greater than 10 characters")
 	String productDescription;
-	@NotBlank
+	@Range(min=1,message="Product Price value must be greater than 1")
 	int productPrice;
-	@NotBlank
-	@Range(min=0, max=200)
+	@Range(min=0, max=200, message="Product Quantity must be within 0 and 200")
 	int productQuantity;
-	@NotBlank
+	
 	String imageUrl;
+	@Transient
+	@JsonIgnore
+	MultipartFile file;
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public int getProductId() {
 		return productId;
 	}

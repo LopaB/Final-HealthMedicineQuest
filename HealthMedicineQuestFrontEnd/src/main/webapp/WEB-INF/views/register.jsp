@@ -1,3 +1,6 @@
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<form:form action="userData.do" method="POST" commandName="user" modelAttribute="user" 
+			class="form-horizontal">
 <div class="container">
 		<div class="row">
 			<div class="col-md-3"></div>
@@ -10,13 +13,16 @@
 					<hr />
 				</div>
 
-				<form class="form-vertical">
+				
 					<!-- Text input-->
 					<div class=" row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input id="UserName" type="text" placeholder="User Name"
-								class="form-control input-md">
+							<form:input path="userName" type="text" placeholder="User Name"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userName" class="help-inline"  style="color:red"/>
+								</div>
 						</div>
 
 					</div>
@@ -24,13 +30,19 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-6">
-							<input id="Password" type="password" placeholder="Password"
-								class="form-control input-md">
+							<form:input path="userPassword" type="password" placeholder="Password"
+								class="form-control input-md"/>
+							<div class="has-error">
+								<form:errors path="userPassword" class="help-inline"  style="color:red"/>
+							</div>	
 						</div>
 
 						<div class="col-md-6" style="padding-left: 2%">
-							<input id="ConfirmPassword" type="Password"
-								placeholder="Confirm Password" class="form-control input-md">
+							<form:input path="userConfirmPassword" type="Password"
+								placeholder="Confirm Password" class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userConfirmPassword" class="help-inline"  style="color:red"/>
+								</div>	
 						</div>
 
 					</div>
@@ -39,8 +51,25 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input id="Name" type="text" placeholder="Name"
-								class="form-control input-md">
+							<form:input path="userFullName" type="text" placeholder="Name"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userFullName" class="help-inline"  style="color:red"/>
+								</div>	
+						</div>
+
+					</div>
+					<!-- Text Select -->
+					<div class="row form-group"
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
+						<div class="col-md-12">
+							<form:select path="userRole" type="email" class="form-control">
+							<form:options value="user" selected>User</form:options>
+							<form:options value="supplier" selected>Supplier</form:options>							
+							</form:select>
+								<div class="has-error">
+									<form:errors path="userRole" class="help-inline"  style="color:red"/>
+								</div>	
 						</div>
 
 					</div>
@@ -48,8 +77,11 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input id="Email" type="email" placeholder="Email"
-								class="form-control input-md">
+							<form:input path="userEmail" type="email" placeholder="Email"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userEmail" class="help-inline"  style="color:red"/>
+								</div>	
 						</div>
 
 					</div>
@@ -57,8 +89,11 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input ID="Phone" type="tel" placeholder="Phone Number"
-								class="form-control input-md">
+							<form:input path="userPhone" type="tel" placeholder="Phone Number"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userPhone" class="help-inline"  style="color:red"/>
+								</div>
 						</div>
 
 					</div>
@@ -66,8 +101,11 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input ID="Question" type="text" placeholder="Security Question"
-								class="form-control input-md">
+							<form:input path="userQuestion" type="text" placeholder="Security Question"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userQuestion" class="help-inline"  style="color:red"/>
+								</div>
 						</div>
 
 					</div>
@@ -75,8 +113,12 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<input id="Answer" type="text" placeholder="Security Answer"
-								class="form-control input-md">
+							<form:input path="userAnswer" type="text" placeholder="Security Answer"
+								class="form-control input-md"/>
+								<div class="has-error">
+									<form:errors path="userAnswer" class="help-inline"  style="color:red"/>
+								</div>
+								
 						</div>
 
 					</div>
@@ -96,3 +138,4 @@
 			</div>
 		</div>
 		</div>
+</form:form>

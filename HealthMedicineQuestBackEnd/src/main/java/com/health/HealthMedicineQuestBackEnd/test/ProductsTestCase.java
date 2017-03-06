@@ -38,11 +38,11 @@ public class ProductsTestCase {
 */
 
 
-	@Test
-	public void testGetProduct(){
-		product=productDAO.getProduct(1);
-		assertEquals("Successfully added a product inside the table!", "SBL Homeocal Tabs (25g)", product.getProductName());
-	}
+//	@Test
+//	public void testGetProduct(){
+//		product=productDAO.getProduct(1);
+//		assertEquals("Successfully added a product inside the table!", "SBL Homeocal Tabs (25g)", product.getProductName());
+//	}
 
 
 

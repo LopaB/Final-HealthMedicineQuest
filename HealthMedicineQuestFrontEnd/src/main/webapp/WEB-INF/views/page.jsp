@@ -112,7 +112,7 @@
     		<c:if test="${userClickRegister==true}">
     			<%@include file="register.jsp" %>
     		</c:if>
-    		<!-- Loading only when user clicks register -->
+    		<!-- Loading only when user clicks ProductsCrud -->
     		<c:if test="${userClickProductCRUD==true}">
     			<%@include file="productCRUD.jsp" %>
     		</c:if>
