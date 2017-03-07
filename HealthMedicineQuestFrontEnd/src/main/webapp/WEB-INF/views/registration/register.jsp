@@ -1,8 +1,52 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<form:form action="userData.do" method="POST" commandName="user" modelAttribute="user" 
-			class="form-horizontal">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<html>
+<head>
+<title>Health Medicine Quest - ${title}</title>
+<script>
+	window.menu='${title}';
+</script>
+<s:url value="/resources/css" var="css"/>
+<s:url value="/resources/js" var="js"/>
+<s:url value="/resources/jquery" var="jquery"/>
+<!-- Style -->
+<link rel="stylesheet" href="${css}/jquery.dataTables.min.css"/>
+<link rel="stylesheet" href="${css}/bootstrap.min.css">
+<link rel="stylesheet" href="${css}/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="${css}/dataTables.bootstrap.min.css"/>
+<link rel="stylesheet" href="${css}/health.css">
+<!-- jQuery library -->
+<script src="${jquery}/jquery-3.1.1.min.js"></script>  
+<!-- Latest compiled JavaScript -->	
+<script  type="text/javascript"  src="${js}/jquery.js"></script>
+<script  type="text/javascript"  src="${js}/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="${js}/bootstrap.min.js"></script>
+<script type="text/javascript"  src="${js}/datatableScript.js"></script>
+<script  type="text/javascript"  src="${js}/productcrud.js"></script>
+<script  type="text/javascript"  src="${js}/dataTables.bootstrap.min.js"></script>
+
+<!-- Self coded js file -->
+<script src="${js}/myapp.js"></script> 
+    <style>
+    	body {
+ 
+  color: #5a5a5a;
+  background-color:#F0F4F5;
+}
+</style>
+</head>
+<body>
 <div class="container">
-		<div class="row">
+<div class="header">
+<%@include file="navbar.jsp"%>
+</div>
+	<div class="content">
+
+		<div class="row form-container">
+		<form:form action="userData.do" method="POST" commandName="user" modelAttribute="user" >
 			<div class="col-md-3"></div>
 			<div class="panel col-md-6"
 				style="padding-bottom: 10px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
@@ -15,11 +59,9 @@
 
 				
 					<!-- Text input-->
-					<div class=" row form-group"
-						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
+					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:input path="userName" type="text" placeholder="User Name"
-								class="form-control input-md"/>
+							<form:input path="userName" id="userName" type="text" placeholder="User Name" class="form-control input-md"/>
 								<div class="has-error">
 									<form:errors path="userName" class="help-inline"  style="color:red"/>
 								</div>
@@ -60,16 +102,14 @@
 
 					</div>
 					<!-- Text Select -->
-					<div class="row form-group"
-						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
+				<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:select path="userRole" type="email" class="form-control">
-							<form:options value="user" selected>User</form:options>
-							<form:options value="supplier" selected>Supplier</form:options>							
+							<form:select path="userRole" class="form-control">
+							<form:option value="0" label="--  Select User Role --" selected="true"/>
+							<form:option value="customer" label="Customer"/>
+							<form:option value="supplier" label="Supplier"/>					
 							</form:select>
-								<div class="has-error">
-									<form:errors path="userRole" class="help-inline"  style="color:red"/>
-								</div>	
+								
 						</div>
 
 					</div>
@@ -89,10 +129,10 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:input path="userPhone" type="tel" placeholder="Phone Number"
+							<form:input path="userPhoneNumber" type="tel" placeholder="Phone Number"
 								class="form-control input-md"/>
 								<div class="has-error">
-									<form:errors path="userPhone" class="help-inline"  style="color:red"/>
+									<form:errors path="userPhoneNumber" class="help-inline"  style="color:red"/>
 								</div>
 						</div>
 
@@ -103,9 +143,7 @@
 						<div class="col-md-12">
 							<form:input path="userQuestion" type="text" placeholder="Security Question"
 								class="form-control input-md"/>
-								<div class="has-error">
-									<form:errors path="userQuestion" class="help-inline"  style="color:red"/>
-								</div>
+								
 						</div>
 
 					</div>
@@ -129,13 +167,21 @@
 					<div class=" row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
 						<div class="col-md-12">
-							<button id="RegisterButton" class="btn btn-success btn-block"
-								style="text-size: 10px">Register</button>
+							<input type="submit" name="action" value="Add" class="btn btn-primary btn-sm">
 						</div>
 					</div>
 
-				</form>
+				
 			</div>
+			</form:form>
 		</div>
+	
+		
 		</div>
-</form:form>
+		<div class="footer">
+			<%@include file="../shared/footer.jsp"%>
+			</div>
+			</div>	
+			</body>
+			</html>
+		

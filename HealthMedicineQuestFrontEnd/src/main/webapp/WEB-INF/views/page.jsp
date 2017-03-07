@@ -33,7 +33,7 @@
 <script src="${js}/myapp.js"></script> 
     <style>
     	body {
-  padding-bottom: 40px;
+ 
   color: #5a5a5a;
   background-color:#F0F4F5;
 }
@@ -107,11 +107,12 @@
     		<!-- Loading only when user clicks login -->
     		<c:if test="${userClickLogin==true}">
     			<%@include file="login.jsp" %>
-    		</c:if>
-    		<!-- Loading only when user clicks register -->
+     		</c:if>
+    <%--	<!-- Loading only when user clicks register -->
     		<c:if test="${userClickRegister==true}">
     			<%@include file="register.jsp" %>
-    		</c:if>
+    		</c:if> --%>
+    		
     		<!-- Loading only when user clicks ProductsCrud -->
     		<c:if test="${userClickProductCRUD==true}">
     			<%@include file="productCRUD.jsp" %>

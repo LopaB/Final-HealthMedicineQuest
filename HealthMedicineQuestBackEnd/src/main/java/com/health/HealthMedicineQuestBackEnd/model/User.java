@@ -1,42 +1,66 @@
 package com.health.HealthMedicineQuestBackEnd.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
 @Entity
-public class User implements Serializable{
+public class User{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int userId;
+	@Size(min=1, max=30,message="user name should be between 1 to 30 characters long")
 	String userName;
+	@Size(min=1, max=30,message="user password should be between 1 to 30 characters long")
 	String userPassword;
+	@Size(min=1, max=30,message="user full name should be between 1 to 30 characters long")
+	String userFullName;
+	public String getUserFullName() {
+		return userFullName;
+	}
+	public void setUserFullName(String userFullName) {
+		this.userFullName = userFullName;
+	}
+	
 	String userRole;
 	@Transient
+	@Size(min=1, max=30,message="user confirm password should be between 1 to 30 characters long")
 	String userConfirmPassword;
+	@Size(min=1, max=30,message="user phone number should be between 1 to 30 characters long")
 	String userPhoneNumber;
+	@Size(min=1, max=30,message="user email should be between 1 to 50 characters long")
 	String userEmail;
 	String userQuestion;
+	@Size(min=1, max=30,message="user answer should be between 1 to 30 characters long")
 	String userAnswer;
+	boolean enabled;
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int userId, String userName, String userPassword, String userRole, String userConfirmPassword,
+	public User(int userId, String userName, String userPassword, String userFullName,String userRole, String userConfirmPassword,
 			String userPhoneNumber, String userEmail, String userQuestion, String userAnswer) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userPassword = userPassword;
+		this.userFullName=userFullName;
 		this.userRole = userRole;
 		this.userConfirmPassword = userConfirmPassword;
 		this.userPhoneNumber = userPhoneNumber;
 		this.userEmail = userEmail;
 		this.userQuestion = userQuestion;
 		this.userAnswer = userAnswer;
+		this.enabled=false;
 	}
 	public int getUserId() {
 		return userId;

@@ -1,6 +1,7 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
@@ -10,9 +11,38 @@
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/webflow-config
+http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
+    
     ">
     <context:component-scan base-package="com.health.HealthMedicineQuestFrontEnd" />
 	<context:component-scan base-package="com.health.HealthMedicineQuestBackEnd" />
+	<!-- WebFlow Configuration -->
+	<webflow:flow-executor id="flowExecutor" />
+        <webflow:flow-registry id="flowRegistry"
+                flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
+                <!-- here the id is mapped to invoke this flow -->
+                <webflow:flow-location id="register" path="/memberShipFlow.xml" />
+        </webflow:flow-registry>
+        <webflow:flow-builder-services id="flowBuilderServices"
+                view-factory-creator="viewFactoryCreator" />
+	<!-- Webflow Bean -->
+    <bean id="viewFactoryCreator"
+                class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+                <property name="viewResolvers">
+                        <list>
+                                <ref bean="viewResolver" />
+                        </list>
+                </property>
+        </bean>
+        <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+                <property name="flowExecutor" ref="flowExecutor" />
+        </bean>
+        <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+                <property name="flowRegistry" ref="flowRegistry" />
+                <property name="order" value="0" />
+        </bean>
+	
 	
 	<!-- MultipartFile Resolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -27,6 +57,7 @@
     	<property name="suffix" value=".jsp"/>
     </bean>
     
+   
     <!-- Loading static resources -->
 	<mvc:resources location="/assets/" mapping="/resources/**" />
 	<mvc:annotation-driven />

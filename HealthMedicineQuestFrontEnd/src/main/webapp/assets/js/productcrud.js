@@ -9,7 +9,7 @@ ajax: {
         { data: 'productId' },
         { data: 'productName' },
         { data: 'productDescription' },
-        { data: 'productPrice' },
+        { data:  'productPrice' },
         { data: 'productQuantity' },
         { data: null,
             mRender: function ( data, type, row ) {
@@ -17,11 +17,11 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary" data-toggle="modal" data-target="#'+row.productId+'">Update Product</a>';}
+                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">Update Product</a>';}
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary" data-toggle="modal" data-target="#'+row.productId+'">Delete Product</a>';}
+                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">Delete Product</a>';}
         }
     ]
 } );

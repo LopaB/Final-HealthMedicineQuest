@@ -45,6 +45,22 @@ public class ProductsTestCase {
 //	}
 
 
-
+	@Test
+	public void testUpdateProduct(){
+		product=productDAO.getProduct(1);
+		product.setProductName("SBL Homeocal Tabs (25g)");
+		product.setProductDescription("Optimise Bone Health, Relieves Osteoporosis, Calcium Deficiency");
+		product.setProductPrice(112);
+		product.setProductQuantity(10);
+		product.setImageUrl("HomeoCal.jpg");
+		assertEquals("Successfully updated a product inside the table!", true, productDAO.updateProducts(product));
+	
+	}
+	
+	@Test
+	public void testDeleteProduct(){
+		assertEquals("Successfully deleted a product from the table!", true, productDAO.deleteProducts(7));
+	
+	}
 
 }

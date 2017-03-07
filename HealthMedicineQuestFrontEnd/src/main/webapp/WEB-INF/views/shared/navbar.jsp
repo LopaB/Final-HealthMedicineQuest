@@ -12,17 +12,20 @@
                 <li id="home"><a href="${contextRoot}/home"><span class="glyphicon glyphicon-home" style="font-size:12pt;"></span> Home</a></li>
                 <li id="contact"><a href="${contextRoot}/contact"><span class="	glyphicon glyphicon-earphone" style="font-size:12pt;"></span> Contact Us</a></li>
                 <li id="about"><a href="${contextRoot}/about"><span class="glyphicon glyphicon-info-sign" style="font-size:12pt;"></span> About Us</a></li>
-                <li class="dropdown">Admin
-                	<ul>
-                		<li id="productscrud"><a href="${contextRoot}/productCRUD"><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> Product Management</a></li>
-                	</ul>
-                </li>
                 <li id="products"><a href="${contextRoot}/products"><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> View All Products</a></li>
+                <li class="dropdown" style="padding-right:10pt">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="font-size:12pt;"></span> Admin</a>
+                    <ul class="dropdown-menu">
+                       <li id="productscrud"><a href="${contextRoot}/productCRUD"><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> Product Management</a></li>
+                       <li id="categorycrud"><a href=""><span class="glyphicon glyphicon-list" style="font-size:12pt;"></span> Category Management</a></li>
+                    </ul>
+                </li>
+                
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="login"><a href="${contextRoot}/login"><span class="glyphicon glyphicon-lock" style="font-size:12pt;"></span> SignIn</a></li>
                 <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out" style="font-size:12pt;"></span> SignOut</a></li>
-                <li id="register"><a href="${contextRoot}/register"><span class="glyphicon glyphicon-user" style="font-size:12pt;"></span> Register</a></li>
+                <li id="register"><a href="${contextRoot}/memberShipFlow.obj"><span class="glyphicon glyphicon-user" style="font-size:12pt;"></span> Register</a></li>
                 <li class="dropdown" style="padding-right:10pt">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="font-size:12pt;"></span><strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
@@ -34,3 +37,5 @@
             </ul>
         </div>
     </nav>
+    
+    

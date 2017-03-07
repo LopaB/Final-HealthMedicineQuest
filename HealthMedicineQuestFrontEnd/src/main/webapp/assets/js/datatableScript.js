@@ -16,11 +16,11 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#'+row.productId+'">View Item</a>';}
+                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">View Item</a>';}
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a class="btn btn-primary" href="'+data+'">Add To Cart</a>';}
+                return '<a class="btn btn-primary btn-md" href="'+data+'">Add To Cart</a>';}
         }
     ]
 } );
