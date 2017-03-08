@@ -1,14 +1,28 @@
 package com.health.HealthMedicineQuestBackEnd.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User{
+public class User implements Serializable{
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1844930708071631748L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int userId;
@@ -37,12 +51,15 @@ public class User{
 	@Size(min=1, max=30,message="user answer should be between 1 to 30 characters long")
 	String userAnswer;
 	boolean enabled;
+	
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -113,9 +130,16 @@ public class User{
 	public String getUserAnswer() {
 		return userAnswer;
 	}
+	public List<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
 	public void setUserAnswer(String userAnswer) {
 		this.userAnswer = userAnswer;
 	}
-	
+	@OneToMany(cascade=CascadeType.ALL)
+	List<Address> address=new ArrayList<>();
 	
 }

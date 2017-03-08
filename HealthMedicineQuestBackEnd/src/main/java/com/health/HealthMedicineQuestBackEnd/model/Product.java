@@ -19,6 +19,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 
 public class Product implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8203788072873319136L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//for autonumber
 	int productId;
@@ -34,6 +38,9 @@ public class Product implements Serializable {
 	int productQuantity;
 	
 	String imageUrl;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Transient
 	@JsonIgnore
 	MultipartFile file;

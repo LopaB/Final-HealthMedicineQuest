@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+      http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+     
+<!-- Executed when webFlow is triggered -->
+	<on-start>
+	<!-- registerHandler is java class available through annotated RegisterHandler.java class. -->
+	 <evaluate expression="registerHandler.getUser()" result="flowScope.user"/>
+	</on-start>
+
+	
+	<view-state id="start" view="registration/register" model="flowScope.user">
+	   <transition on="submit" to="getaddress"/>
+	   <on-exit>
+	   		<evaluate expression="registerHandler.getBillingAddress()" result="flowScope.address" />
+		</on-exit>   
+	</view-state>
+	
+	
+	<!-- Validating User -->
+	<view-state id="getaddress" view="registration/billing" model="flowScope.address">
+	   <transition on="submit" to="bindingaddress"/>
+	</view-state>
+	
+	<action-state id="bindingaddress"> 
+		<evaluate expression="registerHandler.storeDetail(user,address)"></evaluate>
+		<transition on="success" to="confirm" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
+	
+	<view-state id="confirm" view="registration/preRegister" model="flowScope.user">
+	   <transition on="edit" to="start" />
+		<transition on="submit" to="welcome" />
+	</view-state>
+	
+	<end-state id="welcome" view="registration/welcome" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />
+	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
+ 
+	<!-- these events are available in every state-->
+	<global-transitions>
+		<transition on="home" to="toHome" />
+		<transition on="error" to="toException" />
+	</global-transitions>
+</flow>
+	
+ 

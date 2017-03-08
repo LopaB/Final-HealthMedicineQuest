@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li id="login"><a href="${contextRoot}/login"><span class="glyphicon glyphicon-lock" style="font-size:12pt;"></span> SignIn</a></li>
                 <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out" style="font-size:12pt;"></span> SignOut</a></li>
-                <li id="register"><a href="${contextRoot}/memberShipFlow.obj"><span class="glyphicon glyphicon-user" style="font-size:12pt;"></span> Register</a></li>
+                <li id="register"><a href="register"><span class="glyphicon glyphicon-user" style="font-size:12pt;"></span> Register</a></li>
                 <li class="dropdown" style="padding-right:10pt">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="font-size:12pt;"></span><strong class="caret"></strong></a>
                     <ul class="dropdown-menu">

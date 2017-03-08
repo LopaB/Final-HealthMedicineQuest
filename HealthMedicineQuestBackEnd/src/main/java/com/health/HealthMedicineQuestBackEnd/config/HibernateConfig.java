@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages={"com.health.HealthMedicineQuestBackEnd.model"})
+@ComponentScan(basePackages={"com.health.HealthMedicineQuestBackEnd"})
 @EnableTransactionManagement
 public class HibernateConfig {
 	
@@ -41,7 +41,7 @@ public class HibernateConfig {
 	public SessionFactory getSessionFactory(DataSource dataSource){
 		LocalSessionFactoryBuilder builder= new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());
-		builder.scanPackages("com.health.HealthMedicineQuestBackEnd.model");
+		builder.scanPackages("com.health.HealthMedicineQuestBackEnd");
 		return builder.buildSessionFactory();
 	}
 	//All the hibernate properties will be returned by this method

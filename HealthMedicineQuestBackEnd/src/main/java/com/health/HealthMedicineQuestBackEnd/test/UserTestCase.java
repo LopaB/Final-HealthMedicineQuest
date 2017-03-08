@@ -44,27 +44,27 @@ public class UserTestCase {
 //		assertEquals("Successfully added a user inside the table!", "LopaB", user.getUserName());
 //	}
 	
-	@Test
-	public void testUpdateUser(){
-		user=userDAO.getUser(1);
-		//assertEquals("Successfully added a user inside the table!", "LopaB", user.getUserName());
-		//user=new User();
-		user.setUserName("LopaB");
-		user.setUserPassword("lopabm");
-		user.setUserConfirmPassword("lopabm");
-		user.setUserEmail("pinkfriend@gmail.com");
-		user.setUserPhoneNumber("9339901411");
-		user.setUserRole("user");
-		user.setUserQuestion("What is your nick name?");
-		user.setUserAnswer("pinky");
-		assertEquals("Successfully updated a user inside the table!", true, userDAO.updateUser(user));
+//	@Test
+//	public void testUpdateUser(){
+//		user=userDAO.getUser(1);
+//		//assertEquals("Successfully added a user inside the table!", "LopaB", user.getUserName());
+//		//user=new User();
+//		user.setUserName("LopaB");
+//		user.setUserPassword("lopabm");
+//		user.setUserConfirmPassword("lopabm");
+//		user.setUserEmail("pinkfriend@gmail.com");
+//		user.setUserPhoneNumber("9339901411");
+//		user.setUserRole("user");
+//		user.setUserQuestion("What is your nick name?");
+//		user.setUserAnswer("pinky");
+//		assertEquals("Successfully updated a user inside the table!", true, userDAO.updateUser(user));
+//	
+//	}
 	
-	}
-	
-	@Test
-	public void testDeleteUser(){
-		assertEquals("Successfully deleted a user from the table!", true, userDAO.deleteUser(1));
-	
-	}
+//	@Test
+//	public void testDeleteUser(){
+//		assertEquals("Successfully deleted a user from the table!", true, userDAO.deleteUser(1));
+//	
+//	}
 
 }

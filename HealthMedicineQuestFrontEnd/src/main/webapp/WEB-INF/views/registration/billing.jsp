@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 <title>Health Medicine Quest - ${title}</title>
@@ -37,13 +39,13 @@
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container wrapper">
 <div class="header">
 <%@include file="navbar.jsp"%>
 </div>
 	<div class="content">
 		<div class="row form-container">
-		<form:form action="" method="POST" commandName="user" modelAttribute="user" >
+		<form:form modelAttribute="address" >
 			<div class="col-md-3"></div>
 			<div class="panel col-md-6"
 				style="padding-bottom: 10px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
@@ -58,7 +60,7 @@
 					<!-- Text input-->
 					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:input path="addAddress1" id="addAddress1" type="text" placeholder="Address 1" class="form-control input-md"/>
+							<form:input path="addAddress1" id="addAddress1" type="text" placeholder="Address 1" class="form-control input-md" />
 								<div class="has-error">
 									<form:errors path="addAddress1" class="help-inline"  style="color:red"/>
 								</div>
@@ -88,7 +90,7 @@
 					<!-- Text input-->
 					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:input path="addZip" id="addCity" type="text" placeholder="Zip Code" class="form-control input-md"/>
+							<form:input path="addZip" id="addZip" type="text" placeholder="Zip Code" class="form-control input-md"/>
 								<div class="has-error">
 									<form:errors path="addZip" class="help-inline"  style="color:red"/>
 								</div>
@@ -121,6 +123,16 @@
 							<form:checkbox path="shipping" class="form-control input-md"/>Shipping address is same as billing.
 						</div>
 
+					</div>
+					<div class="row form-group"
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
+						<div class="col-md-12"></div>
+					</div>
+					<div class=" row form-group"
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
+						<div class="col-md-12">
+							<input type="submit" name="_eventId_submit" value="Register" class="btn btn-primary btn-md"/>
+						</div>
 					</div>
 			</div>
 			</form:form>

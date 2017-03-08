@@ -22,17 +22,17 @@ import com.health.HealthMedicineQuestBackEnd.model.User;
 
 @Controller
 public class FrontEndUserController {
-	@Autowired
-	private IUserDAO userDAO;
-	
-	@RequestMapping(value={"register"})
-	public ModelAndView register(){
-		ModelAndView model =new ModelAndView("page");
-		model.addObject("title","Register");
-		model.addObject("userClickRegister","true");
-		model.addObject("user",new User());
-		return model;
-	}
+//	@Autowired
+//	private IUserDAO userDAO;
+//	
+//	@RequestMapping(value={"register"})
+//	public ModelAndView register(){
+//		ModelAndView model =new ModelAndView("page");
+//		model.addObject("title","Register");
+//		model.addObject("userClickRegister","true");
+//		model.addObject("user",new User());
+//		return model;
+//	}
 		
 //	@RequestMapping("/allusers")
 //	public @ResponseBody List<User> alluser(){
@@ -52,26 +52,26 @@ public class FrontEndUserController {
 //	}
 	
 	
-	@RequestMapping(value="/userData.do", method=RequestMethod.POST)
-	private ModelAndView doActions(@ModelAttribute("user") @Valid User user,BindingResult result) {
-		
-		
-		 if(result.hasErrors()) {
-			 ModelAndView model1 =new ModelAndView("page");
-				model1.addObject("title","Register");
-				model1.addObject("userClickRegister","true");
-             return model1;
-     }
-		 userDAO.addUser(user);
-		
-		ModelAndView model1 =new ModelAndView("page");
-		model1.addObject("title","Home");
-		model1.addObject("userClickHome","true");
-		model1.addObject("user",new User());
-		
-		return model1;
-	}
-	
+//	@RequestMapping(value="/userData.do", method=RequestMethod.POST)
+//	private ModelAndView doActions(@ModelAttribute("user") @Valid User user,BindingResult result) {
+//		
+//		
+//		 if(result.hasErrors()) {
+//			 ModelAndView model1 =new ModelAndView("register");
+//				//model1.addObject("title","Register");
+//				//model1.addObject("userClickRegister","true");
+//             return model1;
+//     }
+//		 userDAO.addUser(user);
+//		
+//		ModelAndView model1 =new ModelAndView("page");
+//		model1.addObject("title","Home");
+//		model1.addObject("userClickHome","true");
+//		model1.addObject("user",new User());
+//		
+//		return model1;
+//	}
+//	
 
 
 }
