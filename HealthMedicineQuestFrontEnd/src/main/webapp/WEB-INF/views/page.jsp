@@ -104,15 +104,6 @@
     		<c:if test="${userClickProducts==true}">
     			<%@include file="products.jsp" %>
     		</c:if>
-    		<!-- Loading only when user clicks login -->
-    		<c:if test="${userClickLogin==true}">
-    			<%@include file="login.jsp" %>
-     		</c:if>
-    <%--	<!-- Loading only when user clicks register -->
-    		<c:if test="${userClickRegister==true}">
-    			<%@include file="register.jsp" %>
-    		</c:if> --%>
-    		
     		<!-- Loading only when user clicks ProductsCrud -->
     		<c:if test="${userClickProductCRUD==true}">
     			<%@include file="productCRUD.jsp" %>

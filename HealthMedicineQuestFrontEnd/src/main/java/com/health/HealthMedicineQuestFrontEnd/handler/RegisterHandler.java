@@ -1,82 +1,59 @@
 package com.health.HealthMedicineQuestFrontEnd.handler;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
 
 import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
+import com.health.HealthMedicineQuestBackEnd.model.RegisterModel;
 import com.health.HealthMedicineQuestBackEnd.model.Address;
+import com.health.HealthMedicineQuestBackEnd.model.Cart;
 import com.health.HealthMedicineQuestBackEnd.model.User;
 
 @Component
 public class RegisterHandler {
-	
-	User user;
-	Address billingAddress;
-	Address shippingAddress;
+
 	@Autowired
 	IUserDAO userDAO;
+
+	public RegisterModel initializeFlow() {
+		return new RegisterModel();
+	}
+
+	public void saveUser(RegisterModel registerModel,User user){
+		registerModel.setUser(user);
+	}
+	public void saveBillingAddress(RegisterModel registerModel,Address address){
+		registerModel.setAddress(address);
+	}
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Address getBillingAddress() {
-		return billingAddress;
-	}
-
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
-	}
-
-	public Address getShippingAddress() {
-		return shippingAddress;
-	}
-
-	public void setShippingAddress(Address shippingAddress) {
-		this.shippingAddress = shippingAddress;
-	}
-	public RegisterHandler(){
-		user=new User();
-		billingAddress=new Address();
-		shippingAddress=new Address();
-	}
-
-	public String validateUser(@Valid User user, BindingResult result){
-		String status="failure";
-		if(result.hasErrors())
-			status= "failure";
-		else
-			status= "success";
-		return status;
-	}
-	public String storeDetail(User user, Address address){
-		String status="failure";
-		if(user.isEnabled()){
-			List<Address> list=new ArrayList<Address>();
-			address.setUser(user);
-			list.add(address);
-			user.setAddress(list);
-			boolean result=userDAO.addUser(user);
-			if(result)
-			{
-				status= "success";
-			}
-			else{
-				status= "failure";
-			}
-
+	  public void storeDetail(RegisterModel registerModel){ 
+		  User user = registerModel.getUser();
+		// save the user
+		userDAO.addUser(user);
+		Address address = registerModel.getAddress();
+		// set the user 
+		address.setUser(user);
+		// save the billing address
+		userDAO.addUserAddress(address);
+		 
+		// if shipping is not same as billing
+		//if(!billing.isShipping()) {
+		//Address shipping = registerModel.getShipping();
+		// set the user for shipping
+		//shipping.setUser(user);
+		// save the shipping address
+		//userDAO.addUserAddress(shipping);
+		//}
+		// if user is not supplier
+		if(user.getRole().equals("CUSTOMER")) {
+		Cart cart = new Cart();
+		// set the user
+		cart.setUser(user);
+		// save the cart
+		userDAO.addUserCart(cart);
 		}
-		
-		return status;
-	}
+
+	 
+	  }
+	 
 }

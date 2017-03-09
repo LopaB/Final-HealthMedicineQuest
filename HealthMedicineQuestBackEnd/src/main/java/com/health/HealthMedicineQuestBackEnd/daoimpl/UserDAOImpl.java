@@ -1,6 +1,5 @@
 package com.health.HealthMedicineQuestBackEnd.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -8,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.health.HealthMedicineQuestBackEnd.model.Product;
-import com.health.HealthMedicineQuestBackEnd.model.User;
-import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;;
+import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
+import com.health.HealthMedicineQuestBackEnd.model.Address;
+import com.health.HealthMedicineQuestBackEnd.model.Cart;
+import com.health.HealthMedicineQuestBackEnd.model.User;;
 @Repository("userDAO")
 @Transactional
 public class UserDAOImpl implements IUserDAO{
@@ -52,4 +52,22 @@ public class UserDAOImpl implements IUserDAO{
 			return false;
 		}
 	}
+	public boolean addUserAddress(Address address){
+		try {
+			sessionFactory.getCurrentSession().save(address);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		}
+		public boolean addUserCart(Cart cart){
+			try {
+				sessionFactory.getCurrentSession().save(cart);
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
 }

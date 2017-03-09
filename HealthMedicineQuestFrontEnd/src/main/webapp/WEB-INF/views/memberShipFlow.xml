@@ -3,40 +3,48 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
       http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+      
+      <var name="address" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
+     <var name="user" class="com.health.HealthMedicineQuestBackEnd.model.User"/>
+	 
      
 <!-- Executed when webFlow is triggered -->
 	<on-start>
 	<!-- registerHandler is java class available through annotated RegisterHandler.java class. -->
-	 <evaluate expression="registerHandler.getUser()" result="flowScope.user"/>
+	 <evaluate expression="registerHandler.initializeFlow()" result="flowScope.registerModel"/>
 	</on-start>
 
 	
-	<view-state id="start" view="registration/register" model="flowScope.user">
-	   <transition on="submit" to="getaddress"/>
+	<view-state id="start" view="registration/register" model="user">
+	   <transition on="submit" to="billingAddress"/>
 	   <on-exit>
-	   		<evaluate expression="registerHandler.getBillingAddress()" result="flowScope.address" />
-		</on-exit>   
+			<evaluate expression="registerHandler.saveUser(registerModel,user)"></evaluate>
+		</on-exit>  
 	</view-state>
 	
 	
-	<!-- Validating User -->
-	<view-state id="getaddress" view="registration/billing" model="flowScope.address">
-	   <transition on="submit" to="bindingaddress"/>
+	<!-- User enters Billing Address -->
+	<view-state id="billingAddress" view="registration/billing" model="address">
+	   <transition on="submit" to="confirm"/>
+	   <on-exit>
+			<evaluate expression="registerHandler.saveBillingAddress(registerModel,address)"></evaluate>
+		</on-exit>
 	</view-state>
 	
-	<action-state id="bindingaddress"> 
-		<evaluate expression="registerHandler.storeDetail(user,address)"></evaluate>
-		<transition on="success" to="confirm" />
+	<view-state id="confirm" view="registration/preRegister" model="flowScope.registerModel">
+	   <transition on="edit" to="start" />
+		<transition on="submit" to="storedetail" />
+	</view-state>
+	
+	<action-state id="storedetail"> 
+		<evaluate expression="registerHandler.storeDetail(registerModel)" ></evaluate>
+		<transition on="success" to="welcome" />
 		<transition on="failure" to="start" />
 	</action-state>
 	
+		
 	
-	<view-state id="confirm" view="registration/preRegister" model="flowScope.user">
-	   <transition on="edit" to="start" />
-		<transition on="submit" to="welcome" />
-	</view-state>
-	
-	<end-state id="welcome" view="registration/welcome" />
+ <end-state id="welcome" view="registration/welcome" />	
 	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />
 	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
  

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
@@ -29,7 +30,7 @@ public class User implements Serializable{
 	@Size(min=1, max=30,message="user name should be between 1 to 30 characters long")
 	String userName;
 	@Size(min=1, max=30,message="user password should be between 1 to 30 characters long")
-	String userPassword;
+	String password;
 	@Size(min=1, max=30,message="user full name should be between 1 to 30 characters long")
 	String userFullName;
 	public String getUserFullName() {
@@ -39,7 +40,7 @@ public class User implements Serializable{
 		this.userFullName = userFullName;
 	}
 	
-	String userRole;
+	String role;
 	@Transient
 	@Size(min=1, max=30,message="user confirm password should be between 1 to 30 characters long")
 	String userConfirmPassword;
@@ -64,20 +65,20 @@ public class User implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int userId, String userName, String userPassword, String userFullName,String userRole, String userConfirmPassword,
+	public User(int userId, String userName, String password, String userFullName,String role, String userConfirmPassword,
 			String userPhoneNumber, String userEmail, String userQuestion, String userAnswer) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
-		this.userPassword = userPassword;
+		this.password = password;
 		this.userFullName=userFullName;
-		this.userRole = userRole;
+		this.role = role;
 		this.userConfirmPassword = userConfirmPassword;
 		this.userPhoneNumber = userPhoneNumber;
 		this.userEmail = userEmail;
 		this.userQuestion = userQuestion;
 		this.userAnswer = userAnswer;
-		this.enabled=false;
+		this.enabled=true;
 	}
 	public int getUserId() {
 		return userId;
@@ -91,17 +92,17 @@ public class User implements Serializable{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getPassword() {
+		return password;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getUserRole() {
-		return userRole;
+	public String getRole() {
+		return role;
 	}
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getUserConfirmPassword() {
 		return userConfirmPassword;
@@ -139,7 +140,16 @@ public class User implements Serializable{
 	public void setUserAnswer(String userAnswer) {
 		this.userAnswer = userAnswer;
 	}
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	@OneToMany(cascade=CascadeType.ALL)
 	List<Address> address=new ArrayList<>();
+	@OneToOne(cascade=CascadeType.ALL)
+	Cart cart;
 	
 }

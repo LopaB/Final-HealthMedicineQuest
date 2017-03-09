@@ -28,7 +28,7 @@ public class FrontEndProductController {
 	@Autowired
 	HttpServletRequest request;
 	
-	@RequestMapping(value={"products"})
+	@RequestMapping(value={"/user/products"})
 	public ModelAndView products(){
 		ModelAndView model =new ModelAndView("page");
 		model.addObject("title","View All Products");
@@ -42,7 +42,7 @@ public class FrontEndProductController {
 		return productDAO.getAllProducts();
 	}
 	
-	@RequestMapping(value={"/product"})
+	@RequestMapping(value={"/user/product"})
 	public ModelAndView product(@PathVariable("id")int id){
 		ModelAndView model =new ModelAndView("page");
 		model.addObject("userClickProduct","true");
@@ -50,7 +50,7 @@ public class FrontEndProductController {
 		return model;
 	}
 	
-	@RequestMapping(value={"productCRUD"})
+	@RequestMapping(value={"/admin/productCRUD"})
 	public ModelAndView productcrud(){
 		ModelAndView model =new ModelAndView("page");
 		model.addObject("title","Product Management");

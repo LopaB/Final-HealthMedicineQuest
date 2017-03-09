@@ -74,10 +74,10 @@
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-6">
-							<form:input path="userPassword" type="password" placeholder="Password"
+							<form:input path="password" type="password" placeholder="Password"
 								class="form-control input-md"/>
 							<div class="has-error">
-								<form:errors path="userPassword" class="help-inline"  style="color:red"/>
+								<form:errors path="password" class="help-inline"  style="color:red"/>
 							</div>	
 						</div>
 
@@ -106,10 +106,10 @@
 					<!-- Text Select -->
 				<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
-							<form:select path="userRole" class="form-control">
+							<form:select path="role" class="form-control">
 							<form:option value="0" label="--  Select User Role --" selected="true"/>
-							<form:option value="customer" label="Customer"/>
-							<form:option value="supplier" label="Supplier"/>					
+							<form:option value="User" label="User"/>
+							<form:option value="Supplier" label="Supplier"/>					
 							</form:select>
 								
 						</div>
@@ -169,7 +169,7 @@
 					<div class=" row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
 						<div class="col-md-12">
-							<input type="submit" name="_eventId_submit" value="Register" class="btn btn-primary btn-md">
+							<input type="submit" name="_eventId_submit" value="Register" class="btn btn-primary btn-md"/>
 						</div>
 					</div>
 

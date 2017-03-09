@@ -28,11 +28,11 @@ public class UserTestCase {
 //	public void testAddUser(){
 //		user=new User();
 //		user.setUserName("LopaB");
-//		user.setUserPassword("lopab");
+//		user.setPassword("lopab");
 //		user.setUserConfirmPassword("lopab");
 //		user.setUserEmail("pinkfriend@gmail.com");
 //		user.setUserPhoneNumber("9339901411");
-//		user.setUserRole("user");
+//		user.setRole("user");
 //		user.setUserQuestion("What is your nick name?");
 //		user.setUserAnswer("pinky");
 //		assertEquals("Successfully added a user inside the table!", true, userDAO.addUser(user));
@@ -50,11 +50,11 @@ public class UserTestCase {
 //		//assertEquals("Successfully added a user inside the table!", "LopaB", user.getUserName());
 //		//user=new User();
 //		user.setUserName("LopaB");
-//		user.setUserPassword("lopabm");
+//		user.setPassword("lopabm");
 //		user.setUserConfirmPassword("lopabm");
 //		user.setUserEmail("pinkfriend@gmail.com");
 //		user.setUserPhoneNumber("9339901411");
-//		user.setUserRole("user");
+//		user.setRole("user");
 //		user.setUserQuestion("What is your nick name?");
 //		user.setUserAnswer("pinky");
 //		assertEquals("Successfully updated a user inside the table!", true, userDAO.updateUser(user));
