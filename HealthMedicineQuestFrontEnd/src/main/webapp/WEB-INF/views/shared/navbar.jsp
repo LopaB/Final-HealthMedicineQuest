@@ -34,7 +34,7 @@
 				<li id="register"><a href="register"><span
 						class="glyphicon glyphicon-plus"></span> Register</a></li>
 				<li id="login"><a href="${contextRoot}/login"><span
-						class="glyphicon glyphicon-user"></span> Login</a></li>
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<li class="dropdown" style="padding-right:10pt">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="font-size:12pt;"></span><strong class="caret"></strong></a>
                     <ul class="dropdown-menu">

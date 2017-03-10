@@ -108,8 +108,14 @@
     		<c:if test="${userClickProductCRUD==true}">
     			<%@include file="productCRUD.jsp" %>
     		</c:if>
-    		
-    		
+    		<!-- Loading only when user clicks Single Product-->
+    		<c:if test="${userClickSingleProduct==true}">
+    			<%@include file="singleProduct.jsp" %>
+    		</c:if>
+    		<!-- Loading only when user clicks Single Product-->
+    		<c:if test="${userClickCart==true}">
+    			<%@include file="cartview.jsp" %>
+    		</c:if>
     	</div>
     	
  		<hr />

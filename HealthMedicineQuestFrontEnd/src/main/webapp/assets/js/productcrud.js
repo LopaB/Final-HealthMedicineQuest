@@ -17,11 +17,11 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">Update Product</a>';}
+                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'"><span class="glyphicon glyphicon-edit"></span></a>';}
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">Delete Product</a>';}
+                 return '<a  class="btn btn-warning btn-md" href="/HealthMedicineQuestFrontEnd/delete/'+row.productId+'/productD" role="button"><span class="glyphicon glyphicon-trash"></span></a>' ;}
         }
     ]
 } );

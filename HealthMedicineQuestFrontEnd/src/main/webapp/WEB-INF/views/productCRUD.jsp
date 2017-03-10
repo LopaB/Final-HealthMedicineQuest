@@ -1,10 +1,11 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form:form action="productData.do" method="POST" commandName="product" modelAttribute="product" 
-			class="form-horizontal" enctype="multipart/form-data">
+
 <div class="container">
 	<div class="row">
+	<form:form action="productData.do" method="POST" commandName="product" modelAttribute="product" 
+			class="form-horizontal" enctype="multipart/form-data">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 		<div class="form-container">
@@ -89,8 +90,8 @@
 				<div class="container">
 				<div class="row">
 				<div class="col-md-12">
-				<div class="table-responsive">
-				<table border="1" id="mycrudTable" class="table table-bordered table-striped">
+				<div>
+				<table border="1" id="mycrudTable" class="table table-striped">
 					<tr>
 						<thead>
 						<th>Product Id</th>
@@ -110,7 +111,7 @@
 				</div>
 				</div>
 			</form:form>
-			<div>
+			<%-- <div>
 			<!-- Modal -->
 				<c:forEach var="p" items="${productList}">
 					<div class="modal fade" id="${p.productId}" tabindex="-1"
@@ -209,6 +210,6 @@
 						</div>
 					</div>
 				</c:forEach>
-			</div>
+			</div> --%>
 	</div>
 	</div>

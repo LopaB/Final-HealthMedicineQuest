@@ -16,7 +16,7 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'">View Item</a>';}
+                return '<a href="/HealthMedicineQuestFrontEnd/user/'+row.productId+'/singleproduct" role="button" class="btn btn-primary btn-md" data-toggle="" data-target="#'+row.productId+'">View Item</a>';}
         },
         {data: null,
              mRender: function ( data, type, row ) {

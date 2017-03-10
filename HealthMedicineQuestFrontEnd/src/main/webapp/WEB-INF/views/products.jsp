@@ -15,7 +15,7 @@
 						<th>Add To Cart</th>
 					</thead>
 				</table>
-					<!-- Modal -->
+	<% /*  				<!-- Modal -->
 					<c:forEach var="p" items="${list}">
 						<div class="modal fade" id="${p.productId}" tabindex="-1"
 							role="dialog" aria-labelledby="myModalLabel">
@@ -38,7 +38,8 @@
 													<h2>${p.productDescription}</h2>
 													<h4>&#8377;${p.productPrice}</h4>
 													<p>
-														<a href="#" class="btn btn-info btn-md" role="button">close</a>
+													
+														<a href="cart.jsp" class="btn btn-info btn-md" role="button">close</a>
 													</p>
 												</div>
 											</div>
@@ -48,7 +49,7 @@
 								</div>
 							</div>
 						</div>
-					</c:forEach>
+					</c:forEach> */%>
 			</div>
 		</div>
 	</div>

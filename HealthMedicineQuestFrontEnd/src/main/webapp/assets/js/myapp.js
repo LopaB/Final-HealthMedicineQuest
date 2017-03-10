@@ -22,5 +22,6 @@ $(function(){
 		case 'ProductCRUD':
 			$('#productcrud').addClass('Active');
 			break;
+		
 	}
 });

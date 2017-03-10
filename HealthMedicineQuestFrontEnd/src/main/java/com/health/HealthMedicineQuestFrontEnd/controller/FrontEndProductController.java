@@ -42,10 +42,35 @@ public class FrontEndProductController {
 		return productDAO.getAllProducts();
 	}
 	
-	@RequestMapping(value={"/user/product"})
-	public ModelAndView product(@PathVariable("id")int id){
-		ModelAndView model =new ModelAndView("page");
-		model.addObject("userClickProduct","true");
+	@RequestMapping(value={"/user/{productId}/cart"})
+	public ModelAndView cart(@PathVariable("productId")int id){
+		ModelAndView model =new ModelAndView("cartview");
+		model.addObject("userClickCart","true");
+		model.addObject("user","true");
+		model.addObject("product",new Product());
+		model.addObject("prod", productDAO.getProduct(id));
+		return model;
+	}
+	
+	@RequestMapping("/delete/{productId}/productD")
+    public ModelAndView delete(@PathVariable("productId") int id) {
+                   ModelAndView model = new ModelAndView("page");
+                   productDAO.deleteProducts(id);
+                   model.addObject("productList", productDAO.getAllProducts());
+                   model.addObject("product", new Product());
+                   model.addObject("title", "Product Management");
+                   model.addObject("userClickProductCRUD", true);
+                   return model;
+    }
+
+
+	
+	@RequestMapping(value={"/user/{productId}/singleproduct"})
+	public ModelAndView product(@PathVariable("productId")int id){
+		ModelAndView model =new ModelAndView("singleProduct");
+		model.addObject("userClickSingleProduct","true");
+		model.addObject("user","true");
+		model.addObject("product",new Product());
 		model.addObject("prod", productDAO.getProduct(id));
 		return model;
 	}
@@ -61,7 +86,7 @@ public class FrontEndProductController {
 	}
 	
 	
-	@RequestMapping(value="/productData.do", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/productData.do", method=RequestMethod.POST)
 	private ModelAndView doActions(@ModelAttribute("product") @Valid Product product,BindingResult result, @RequestParam String action) {
 		
 		Product productResult=new Product();
@@ -119,5 +144,7 @@ public class FrontEndProductController {
 		}
 		return fileName;
 	}
+	
+	
 
 }

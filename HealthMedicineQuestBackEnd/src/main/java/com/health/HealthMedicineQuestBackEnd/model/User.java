@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,33 +28,38 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int userId;
-	@Size(min=1, max=30,message="user name should be between 1 to 30 characters long")
+	@Size(min=1, max=30,message="Please enter first name")
 	String userName;
-	@Size(min=1, max=30,message="user password should be between 1 to 30 characters long")
+	@Size(min=1, max=30,message="Please enter password")
 	String password;
-	@Size(min=1, max=30,message="user full name should be between 1 to 30 characters long")
+	@Size(min=1, max=30,message="Please enter full name")
 	String userFullName;
+	@Transient
+	@Size(min=1, max=30,message="Confirm password must be equal to the password")
+	String userConfirmPassword;
+	@Size(min=1, max=30,message="Please enter phone number")
+	String userPhoneNumber;
+	@Size(min=1, max=30,message="Please enter email id")
+	String userEmail;
+	@Size(min=1, max=30,message="Please enter security question")
+	String userQuestion;
+	@Size(min=1, max=30,message="Please enter security answer")
+	String userAnswer;
+	boolean enabled;
+	String role;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+	List<Address> address=new ArrayList<>();
+	@OneToOne(cascade=CascadeType.ALL,mappedBy = "user", fetch = FetchType.EAGER)
+	Cart cart;
+	
+	
 	public String getUserFullName() {
 		return userFullName;
 	}
 	public void setUserFullName(String userFullName) {
 		this.userFullName = userFullName;
 	}
-	
-	String role;
-	@Transient
-	@Size(min=1, max=30,message="user confirm password should be between 1 to 30 characters long")
-	String userConfirmPassword;
-	@Size(min=1, max=30,message="user phone number should be between 1 to 30 characters long")
-	String userPhoneNumber;
-	@Size(min=1, max=30,message="user email should be between 1 to 50 characters long")
-	String userEmail;
-	String userQuestion;
-	@Size(min=1, max=30,message="user answer should be between 1 to 30 characters long")
-	String userAnswer;
-	boolean enabled;
-	
-	
+		
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -147,9 +153,6 @@ public class User implements Serializable{
 		this.cart = cart;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL)
-	List<Address> address=new ArrayList<>();
-	@OneToOne(cascade=CascadeType.ALL)
-	Cart cart;
+	
 	
 }
