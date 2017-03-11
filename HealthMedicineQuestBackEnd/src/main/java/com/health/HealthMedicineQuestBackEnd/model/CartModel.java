@@ -1,47 +1,47 @@
 package com.health.HealthMedicineQuestBackEnd.model;
 
 import java.io.Serializable;
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.health.HealthMedicineQuestBackEnd.dao.IAddressDAO;
+import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
 
 public class CartModel implements Serializable{
 
 	private static final long serialVersionUID = -4551827186947380158L;
-	CartItem cartItem;
+	@Autowired
+	IAddressDAO addressDAO;
+	@Autowired
+	IUserDAO userDAO;
 	Address billingAddress;
 	Address shippingAddress;
-	//Payment payment;
-	//Order order;
-//	public Payment getPayment() {
-//		return payment;
-//	}
-//
-//	public void setPayment(Payment payment) {
-//		this.payment = payment;
-//	}
-//
-//	public Order getOrder() {
-//		return order;
-//	}
-//
-//	public void setOrder(Order order) {
-//		this.order = order;
-//	}
+	Payment payment;
+	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
-	public CartItem getCartItem() {
-		return cartItem;
-	}
+	
 
-	public void setCartItem(CartItem cartItem) {
-		this.cartItem = cartItem;
-	}
-
-	public Address getBillingAddress() {
+	public Address getBillingAddress(Principal p) {
+		//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User u=userDAO.getUserByUserName(p.getName());
+		this.billingAddress=addressDAO.getAddressByUser(u);
 		return billingAddress;
 	}
 	public void setBillingAddress(Address billingAddress) {
+		
 		this.billingAddress = billingAddress;
 	}
 	public Address getShippingAddress() {
@@ -51,11 +51,10 @@ public class CartModel implements Serializable{
 		this.shippingAddress = shippingAddress;
 	}
 	public CartModel() {
-		cartItem=new CartItem();
+		
 		billingAddress=new Address();
 		shippingAddress=new Address();
-		//order=new Order();
-		//payment=new Payment();
+		payment=new Payment();
 	}
 	
 

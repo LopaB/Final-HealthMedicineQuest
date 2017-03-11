@@ -29,7 +29,7 @@ public class CartItemDAOImpl implements ICartItemDAO{
 	
 	public boolean addCartItem(CartItem ci){
 		try {
-			sessionFactory.getCurrentSession().persist(ci);
+			sessionFactory.getCurrentSession().save(ci);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,6 +48,35 @@ public class CartItemDAOImpl implements ICartItemDAO{
 	public boolean deleteCartItem(int cartItemId){
 		try {
 			sessionFactory.getCurrentSession().delete(getCartItem(cartItemId));
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean deleteAllCartItem(Cart c){
+		try {
+			sessionFactory.getCurrentSession().delete(c.getCartId());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	//Cart CRUD
+	public boolean updateCart(Cart c){
+		try {
+			sessionFactory.getCurrentSession().update(c);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean deleteCart(int cartId){
+		try {
+			sessionFactory.getCurrentSession().delete(cartId);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

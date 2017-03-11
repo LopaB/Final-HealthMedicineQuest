@@ -14,7 +14,7 @@
                 <li id="contact"><a href="${contextRoot}/contact"><span class="	glyphicon glyphicon-earphone" style="font-size:12pt;"></span> Contact Us</a></li>
                 <li id="about"><a href="${contextRoot}/about"><span class="glyphicon glyphicon-info-sign" style="font-size:12pt;"></span> About Us</a></li>
                 <security:authorize access="hasAuthority('User')">
-				<li id="cart"><a href="/#/"><span
+				<li id="cart"><a href="${contextRoot}/user/cart"><span
 						class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 				<li id="products"><a href="${contextRoot}/user/products"><span
 						class="glyphicon glyphicon-list"></span> View All</a></li>

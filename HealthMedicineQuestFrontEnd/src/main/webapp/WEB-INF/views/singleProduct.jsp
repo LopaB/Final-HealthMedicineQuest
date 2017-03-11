@@ -49,7 +49,7 @@
   
  
 <div class="container content">
-  <form:form modelAttribute="prod" action="cart">
+  <form:form modelAttribute="prod" action="${contextRoot}/user/${prod.productId}">
 <div style="height:20%"></div>
 	<div class="row">
 		<div class="col-md-3">
@@ -68,6 +68,15 @@
 			</div>
 			<div class="row">
 				<p><h2>&#8377 ${prod.productPrice}</h2></p>
+			</div>
+			<div class="row">
+				<p>
+					<select name="quantity">
+  						<c:forEach var="i" begin="1" end="${prod.productQuantity}">
+  							<option value="${i}">${i}</option>
+  						</c:forEach>
+  					</select>
+				</p>
 			</div>
 			<div class="row">
 				<p>

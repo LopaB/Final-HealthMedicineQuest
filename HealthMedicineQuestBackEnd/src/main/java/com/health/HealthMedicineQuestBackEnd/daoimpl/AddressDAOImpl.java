@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.health.HealthMedicineQuestBackEnd.dao.IAddressDAO;
 import com.health.HealthMedicineQuestBackEnd.model.Address;
+import com.health.HealthMedicineQuestBackEnd.model.User;
 
 @Repository("addressDAO")
 @Transactional
@@ -20,6 +21,9 @@ public class AddressDAOImpl implements IAddressDAO{
 	}
 	public Address getAddress(int id){
 		return sessionFactory.getCurrentSession().get(Address.class,Integer.valueOf(id));
+	}
+	public Address getAddressByUser(User user){
+		return (Address)sessionFactory.getCurrentSession().createQuery("from Address where user=:user").setParameter("user",user).getSingleResult();
 	}
 	public boolean addAddress(Address a){
 		try {

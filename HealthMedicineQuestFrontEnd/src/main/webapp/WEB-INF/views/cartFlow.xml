@@ -6,68 +6,52 @@
       
       <var name="billing" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
       <var name="shipping" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
-	 <var name="cartitem" class="com.health.Health.HealthMedicineQuestBackEnd.model.CartItem"/>
+	 <var name="payment" class="com.health.HealthMedicineQuestBackEnd.model.Payment"/>
      
 <!-- Executed when webFlow is triggered -->
 	<on-start>
 	<!-- registerHandler is java class available through annotated RegisterHandler.java class. -->
-	 <evaluate expression="cartHandler.initializeFlow()" result="flowScope.cartModel"/>
+	 <evaluate expression="cartHandler.initializeModel()" result="flowScope.cartModel"/>
 	</on-start>
 
 	
-	<view-state id="start" view="cart/cartview" model="cartitem">
-	   <transition on="submit" to="billingAddress"/>
-	   <on-exit>
-			<evaluate expression="cartHandler.saveCart(cartModel,cartitem)"></evaluate>
-		</on-exit>  
+	<view-state id="start" view="billingCart" model="billing">
+	   <transition on="submit" to="shippingAddress"/>
+	  
 	</view-state>
 	
 	
 	<!-- User enters Billing Address -->
-	<view-state id="billingAddress" view="cart/billing" model="billing">
-	   <transition on="submit" to="shippingAddress"/>
-	   <on-exit>
-			<evaluate expression="cartHandler.saveBillingAddress(cartModel,billing)"></evaluate>
-		</on-exit>
-	</view-state>
-	
-	<!-- User enters Shipping Address -->
-	<view-state id="shippingAddress" view="cart/shipping" model="shipping">
-	   <transition on="submit" to="orderpayment"/>
+	<view-state id="shippingAddress" view="shippingCart" model="shipping">
+	   <transition on="submit" to="pay"/>
 	   <on-exit>
 			<evaluate expression="cartHandler.saveShippingAddress(cartModel,shipping)"></evaluate>
 		</on-exit>
 	</view-state>
 	
-	<!-- User view order payment -->
-	<view-state id="orderpayment" view="cart/payment" model="pay">
-	   <transition on="submit" to="orderreceipt"/>
+	<!-- User enters Shipping Address -->
+	<view-state id="pay" view="payment" model="payment">
+	   <transition on="submit" to="invoice"/>
 	   <on-exit>
-			<evaluate expression="cartHandler.savePayment(cartModel,pay)"></evaluate>
+			<evaluate expression="cartHandler.savePayment(cartModel,payment)"></evaluate>
 		</on-exit>
 	</view-state>
 	
-	<!-- User view order receipt -->
-	<view-state id="orderreceipt" view="cart/orderreceipt" model="order">
-	   <transition on="submit" to="confirm"/>
-	   <on-exit>
-			<evaluate expression="cartHandler.saveOrderReceipt(cartModel,order)"></evaluate>
-		</on-exit>
-	</view-state>
-	<!-- Confirm shopping -->
-	<view-state id="confirm" view="cart/preOrder" model="flowScope.cartModel">
-	   <transition on="edit" to="start" />
+	<!-- User view order payment -->
+	<view-state id="invoice" view="invoice" model="flowScope.cartModel">
+	 
 		<transition on="submit" to="storedetail" />
+	   
 	</view-state>
 	
 	<action-state id="storedetail"> 
 		<evaluate expression="cartHandler.storeDetail(cartModel)" ></evaluate>
-		<transition on="success" to="welcome" />
+		<transition on="success" to="toHome" />
 		<transition on="failure" to="start" />
 	</action-state>	
 	
- <end-state id="welcome" view="cart/welcome" />	
-	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />
+ <end-state id="welcome" view="toHome" />	
+	<end-state id="toHome" view="externalRedirect:contextRelative:/cartview" />
 	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
  
 	<!-- these events are available in every state-->

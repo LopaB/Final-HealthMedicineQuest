@@ -41,21 +41,23 @@
 <body>
 <div class="container wrapper">
 <div class="header">
-<%@include file="navbar.jsp"%>
+<%@include file="registration/navbar.jsp"%>
 </div>
-	<div class="content">
-		<div class="row form-container">
-		<form:form modelAttribute="address" >
+	<div class=" row content form-container">
+		<form:form modelAttribute="shipping" >
 			<div class="col-md-3"></div>
 			<div class="panel col-md-6"
 				style="padding-bottom: 10px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
 				<div class="panel-heading"
 					style="text-align: center; font-weight: bolder">
-					<h2>Billing Address</h2>
+					<h2>Shipping Address</h2>
 					
 					<hr />
+					<div>
+						<input type="checkbox" name="shipping" value="Same as Billing Address" selected="true"/>
+					</div>
 				</div>
-
+		<c:if test="${shipping}">
 				
 					<!-- Text input-->
 					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
@@ -128,19 +130,22 @@
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
 						<div class="col-md-12"></div>
 					</div>
-					<div class=" row form-group"
-						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
+					
+			</c:if>
+			<div class=" row form-group"
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
 						<div class="col-md-12">
-							<input type="submit" name="_eventId_submit" value="Register" class="btn btn-primary btn-md"/>
+							<input type="submit" name="_eventId_submit" value="Continue" class="btn btn-primary btn-md"/>
 						</div>
 					</div>
 			</div>
 			</form:form>
+			
+	</div>
+	
+	</div>
+	<div class="footer">
+			<%@include file="./shared/footer.jsp"%>
 			</div>
-			</div>	
-			<div class="footer">
-			<%@include file="../shared/footer.jsp"%>
-			</div>
-			</div>	
-			</body>
-			</html>
+	</body>
+	</html>

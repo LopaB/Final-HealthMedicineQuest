@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+@Component
 @Entity
 public class User implements Serializable{
 	public static long getSerialversionuid() {
@@ -45,7 +47,7 @@ public class User implements Serializable{
 	String userQuestion;
 	@Size(min=1, max=30,message="Please enter security answer")
 	String userAnswer;
-	boolean enabled;
+	boolean enabled=true;
 	String role;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
 	List<Address> address=new ArrayList<>();

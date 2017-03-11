@@ -1,6 +1,7 @@
 package com.health.HealthMedicineQuestFrontEnd.controller;
 
 import java.io.File;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +19,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.health.HealthMedicineQuestBackEnd.dao.ICartItemDAO;
 import com.health.HealthMedicineQuestBackEnd.dao.IProductDAO;
+import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
+import com.health.HealthMedicineQuestBackEnd.model.Cart;
+import com.health.HealthMedicineQuestBackEnd.model.CartItem;
 import com.health.HealthMedicineQuestBackEnd.model.Product;
+import com.health.HealthMedicineQuestBackEnd.model.User;
 
 @Controller
 public class FrontEndProductController {
 	@Autowired
 	private IProductDAO productDAO;
 	@Autowired
+	private IUserDAO userDAO;
+	
+	@Autowired
 	HttpServletRequest request;
+	@Autowired
+	ICartItemDAO cartItemDAO;
 	
 	@RequestMapping(value={"/user/products"})
 	public ModelAndView products(){
@@ -42,13 +53,15 @@ public class FrontEndProductController {
 		return productDAO.getAllProducts();
 	}
 	
-	@RequestMapping(value={"/user/{productId}/cart"})
-	public ModelAndView cart(@PathVariable("productId")int id){
-		ModelAndView model =new ModelAndView("cartview");
+	@RequestMapping(value={"/user/cart"})
+	public ModelAndView cart(Principal principal){
+		ModelAndView model =new ModelAndView("page");
+		User user=userDAO.getUserByUserName(principal.getName());
+		Cart cart=user.getCart();
 		model.addObject("userClickCart","true");
 		model.addObject("user","true");
-		model.addObject("product",new Product());
-		model.addObject("prod", productDAO.getProduct(id));
+		model.addObject("cartItem",new CartItem());
+		model.addObject("prod", cartItemDAO.getAllCartItem(cart));
 		return model;
 	}
 	

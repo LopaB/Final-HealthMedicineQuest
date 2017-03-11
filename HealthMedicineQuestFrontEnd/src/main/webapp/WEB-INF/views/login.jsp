@@ -44,7 +44,9 @@
 				<div class="panel-heading panel-heading-login"
 					style="text-align: center; font-weight: bolder">USER LOGIN</div>
 				<form id="form1" action="login" method="post">
-				
+				<c:if test="${error}">
+					<p style="color:red;font-size:20px">${error}</p>
+				</c:if>
 					<div class="row">
 						<div class="input-group">
 							<div class="input-group-addon">

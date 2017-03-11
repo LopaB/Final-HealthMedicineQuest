@@ -45,7 +45,7 @@ public class RegisterHandler {
 		//userDAO.addUserAddress(shipping);
 		//}
 		// if user is not supplier
-		if(user.getRole().equals("CUSTOMER")) {
+		if(user.getRole().equals("User")) {
 		Cart cart = new Cart();
 		// set the user
 		cart.setUser(user);

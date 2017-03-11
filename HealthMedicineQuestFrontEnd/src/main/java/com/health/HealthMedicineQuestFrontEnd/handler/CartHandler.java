@@ -1,18 +1,21 @@
 package com.health.HealthMedicineQuestFrontEnd.handler;
 
-import com.health.HealthMedicineQuestBackEnd.model.Address;
-import com.health.HealthMedicineQuestBackEnd.model.CartItem;
-import com.health.HealthMedicineQuestBackEnd.model.CartModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
+import com.health.HealthMedicineQuestBackEnd.model.Address;
+import com.health.HealthMedicineQuestBackEnd.model.CartModel;
+import com.health.HealthMedicineQuestBackEnd.model.Payment;
+@Component
 public class CartHandler {
-	
+	@Autowired
+	IUserDAO userDAO;
 	public CartModel initializeModel(){
 		return new CartModel();
 	}
 
-	public void saveCartItem(CartModel cartModel,CartItem cartItem){
-		cartModel.setCartItem(cartItem);
-	}
+	
 	
 	public void saveBillingAddress(CartModel cartModel,Address billing){
 		cartModel.setBillingAddress(billing);
@@ -22,14 +25,12 @@ public class CartHandler {
 		cartModel.setShippingAddress(shipping);
 	}
 	
-//	public void saveOrder(CartModel cartModel,Order order){
-//		cartModel.setOrder(order);
-//	}
-//	public void savePayment(CartModel cartModel,Payment payment){
-//		cartModel.setPayment(payment);
-//	}
-//	
-	public void storeDetail(CartModel cartModel){ 
+
+	public void savePayment(CartModel cartModel,Payment payment){
+		cartModel.setPayment(payment);
+	}
 	
+	public void storeDetail(CartModel cartModel){ 
+		//User user=userDAO.getUserByUserName(principal.getName());
 	}
 }

@@ -23,7 +23,14 @@ public class UserDAOImpl implements IUserDAO{
 	public User getUser(int id){
 		return sessionFactory.getCurrentSession().get(User.class,Integer.valueOf(id));
 	}
-	
+	public User getUserByUserName(String userName){
+		String selectUser="from User where userName=:userName";
+		return sessionFactory
+		.getCurrentSession()
+		.createQuery(selectUser, User.class)
+		.setParameter("userName",userName)
+		.getSingleResult();
+	}
 	public boolean addUser(User u){
 		try {
 			sessionFactory.getCurrentSession().persist(u);
