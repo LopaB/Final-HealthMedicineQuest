@@ -23,11 +23,11 @@ public class AddressDAOImpl implements IAddressDAO{
 		return sessionFactory.getCurrentSession().get(Address.class,Integer.valueOf(id));
 	}
 	public Address getAddressByUser(User user){
-		return (Address)sessionFactory.getCurrentSession().createQuery("from Address where user=:user").setParameter("user",user).getSingleResult();
+		return (Address)sessionFactory.getCurrentSession().createQuery("from Address where user=:user").setParameter("user",user).getResultList().get(0);
 	}
 	public boolean addAddress(Address a){
 		try {
-			sessionFactory.getCurrentSession().persist(a);
+			sessionFactory.getCurrentSession().save(a);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -40,13 +40,15 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="panel panel-login row col-md-6"
-				style="padding: 50px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
+				style="padding: 30px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
 				<div class="panel-heading panel-heading-login"
-					style="text-align: center; font-weight: bolder">USER LOGIN</div>
+					style="text-align: center; font-weight: bolder"><h2>USER LOGIN</h2></div>
 				<form id="form1" action="login" method="post">
+				<div class="row" style="height:20px">
 				<c:if test="${error}">
 					<p style="color:red;font-size:20px">${error}</p>
 				</c:if>
+				</div>
 					<div class="row">
 						<div class="input-group">
 							<div class="input-group-addon">

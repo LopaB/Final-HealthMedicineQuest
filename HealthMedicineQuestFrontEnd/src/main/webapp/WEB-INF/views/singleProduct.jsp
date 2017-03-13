@@ -37,6 +37,7 @@
     	body {
  				color: #5a5a5a;
   				background-color:#F0F4F5;
+  				 overflow-x: hidden;
 			}
 	</style>
 </head>
@@ -50,15 +51,16 @@
  
 <div class="container content">
   <form:form modelAttribute="prod" action="${contextRoot}/user/${prod.productId}">
-<div style="height:20%"></div>
+<div style="height:10%"></div>
 	<div class="row">
 		<div class="col-md-3">
 		<div id="${prod.productId}"></div>
-			<div>
+			<div style="border:2px solid crimson; border-radius:15px; text-align:center; background:white">
 				<img src="${images}/${prod.imageUrl}" height="300" width="200">
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-1"></div>
+		<div class="col-md-6" style="border:2px solid crimson; border-radius:15px; text-align:center; height:300; background:white">
 			<div class="row">
 				<p><h2>${prod.productName}</h2></p>
 			</div>
@@ -69,7 +71,7 @@
 			<div class="row">
 				<p><h2>&#8377 ${prod.productPrice}</h2></p>
 			</div>
-			<div class="row">
+			<div class="row" style="font-size:20px">
 				<p>
 					<select name="quantity">
   						<c:forEach var="i" begin="1" end="${prod.productQuantity}">

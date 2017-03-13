@@ -9,7 +9,8 @@ ajax: {
         { data: 'productId' },
         { data: 'productName' },
         { data: 'productDescription' },
-        { data:  'productPrice' },
+        { data: 'productCategory' },
+        { data: 'productPrice' },
         { data: 'productQuantity' },
         { data: null,
             mRender: function ( data, type, row ) {
@@ -21,8 +22,8 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                 return '<a  class="btn btn-warning btn-md" href="/HealthMedicineQuestFrontEnd/delete/'+row.productId+'/productD" role="button"><span class="glyphicon glyphicon-trash"></span></a>' ;}
+                 return '<a  class="btn btn-warning btn-md" href="/HealthMedicineQuestFrontEnd/delete/'+row.productId+'/productD" role="button"><span class="glyphicon glyphicon-trash"></span></a>';}
         }
     ]
-} );
+});
 });

@@ -54,7 +54,7 @@
             
                 <div style="padding-top:10px; padding-bottom:10px; width:260px; height:150px; border-radius:15px; background-color:#337ab7; font-style:italic">
                     <img src="${images}/ayurveda1.jpg" class="img-thumbnail" width="110" height="60" style="border-radius: 25px; overflow: hidden;"/>
-                    <a href="${contextRoot}/allproducts" style="color:white"><h2> Ayurveda</h2></a>
+                    <a href="${contextRoot}/user/products" style="color:white"><h2> Ayurveda</h2></a>
                 </div>
             
         </div>
@@ -62,7 +62,7 @@
            
                 <div style="padding-top:10px; padding-bottom:10px; width:260px; height:150px; border-radius:15px; background-color:#337ab7; font-style:italic">
                     <img src="${images}/homeopathy.jpg" class="img-thumbnail" width="110" height="60" style="border-radius: 25px; overflow: hidden;"/>
-                    <a href="${contextRoot}/allproducts" style="color:white"><h2> Homeopathy</h2></a>
+                    <a href="${contextRoot}/user/products" style="color:white"><h2> Homeopathy</h2></a>
                 </div>
             
         </div>
@@ -70,7 +70,7 @@
             
                 <div style="padding-top:10px; padding-bottom:10px; width:260px; height:150px; border-radius:15px; background-color:#337ab7; font-style:italic">
                     <img src="${images}/baby-care1.jpg" class="img-thumbnail" width="120" height="70" style="border-radius: 25px; overflow: hidden;"/>
-                    <a href="${contextRoot}/allproducts" style="color:white"><h2> Baby Care</h2></a>
+                    <a href="${contextRoot}/user/products" style="color:white"><h2> Baby Care</h2></a>
                 </div>
            
         </div>
@@ -78,7 +78,7 @@
             
                 <div style="padding-top:10px; padding-bottom:10px; width:260px; height:150px; border-radius:15px; background-color:#337ab7; font-style:italic">
                     <img src="${images}/beauty-care1.jpg" class="img-thumbnail" width="110" height="60" style="border-radius: 25px; overflow: hidden;"/>
-                    <a href="${contextRoot}/allproducts" style="color:white"><h2> Beauty Care</h2></a>  
+                    <a href="${contextRoot}/user/products" style="color:white"><h2> Beauty Care</h2></a>  
                 </div>
            
         </div>
@@ -89,7 +89,7 @@
         <div class="col-md-12">
             <h1 style="text-align:center">Category and Terminology </h1>
             <p style="text-align:left">
-                <b>Homeopathy</b> : Dr. Reckeweg/ Dr. Willmar Schwabe/ Adel Pekana/ SBL/ Baksonâ€™s/ Wheezal/ New Life/ R S Bhargava/ Adven/ Bhandari/ Hapdco/ Medisynth/ Allen/ B.Jain/ Bioforce/ Dr.Wellmans/ Bios Lab/ HL/ Haslab/ Lords/ Jhactions/ Indo German/ REPL/ Ralson
+                <b>Homeopathy</b> : Dr. Reckeweg/ Dr. Willmar Schwabe/ Adel Pekana/ SBL/ Bakson's/ Wheezal/ New Life/ R S Bhargava/ Adven/ Bhandari/ Hapdco/ Medisynth/ Allen/ B.Jain/ Bioforce/ Dr.Wellmans/ Bios Lab/ HL/ Haslab/ Lords/ Jhactions/ Indo German/ REPL/ Ralson
                 <br/>
                 <b>Homeopathic Dilutions</b> : Aconite/ Allium Cepa/ Alumina/ Antim Crud/ Antim Tart/ Apis Mel/ Arnica/ Arsenic Album/ Baryta Carb/ Belladonna/ Bryonia/ Calcarea Carb/ Carvo Veg/ Causticum/ Cina/ China/ Colocynthis/ Conium/ Eupatorium Perf/ Gelsemium/ Graphites/ Hepar Sulph/ Ignatia/ Ipecac/ Kali Bichrom/ Ledum Pal/ Lycopodium/ Merc sol/ Nitric Acid/ Nux Vomica/ Ocimum Can/ Petroleum/ Phosphoric Acid/ Phosphorus/ Pulsatilla/ Rhus tox/ Ruta/ Sepia/ Sulphur/ Thuja 
                 <br/>

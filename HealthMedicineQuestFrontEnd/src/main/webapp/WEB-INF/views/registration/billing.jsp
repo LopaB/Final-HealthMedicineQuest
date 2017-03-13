@@ -9,6 +9,7 @@
 <script>
 	window.menu='${title}';
 </script>
+<s:url value="/resources/images" var="images"/>
 <s:url value="/resources/css" var="css"/>
 <s:url value="/resources/js" var="js"/>
 <s:url value="/resources/jquery" var="jquery"/>
@@ -117,13 +118,7 @@
 						</div>
 
 					</div>
-					<!-- Text input-->
-					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
-						<div class="col-md-12">
-							<form:checkbox path="shipping" class="form-control input-md"/>Shipping address is same as billing.
-						</div>
-
-					</div>
+					
 					<div class="row form-group"
 						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
 						<div class="col-md-12"></div>

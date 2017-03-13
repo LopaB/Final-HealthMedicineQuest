@@ -19,6 +19,8 @@ public class CartItemDAOImpl implements ICartItemDAO{
 	@Autowired
 	SessionFactory sessionFactory;
 	IUserDAO userDAO;
+	@Autowired
+	User user;
 	public List<CartItem> getAllCartItem(Cart cart){
 				
 		return sessionFactory.getCurrentSession().createQuery("from CartItem where cart=:cart").setParameter("cart", cart).getResultList();
@@ -26,6 +28,8 @@ public class CartItemDAOImpl implements ICartItemDAO{
 	public CartItem getCartItem(int id){
 		return sessionFactory.getCurrentSession().get(CartItem.class,Integer.valueOf(id));
 	}
+	
+	
 	
 	public boolean addCartItem(CartItem ci){
 		try {
@@ -55,15 +59,19 @@ public class CartItemDAOImpl implements ICartItemDAO{
 		}
 	}
 	
-	public boolean deleteAllCartItem(Cart c){
-		try {
-			sessionFactory.getCurrentSession().delete(c.getCartId());
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+	public boolean deleteAllCartItem(List<CartItem> ci) { 
+        try { 
+                for(CartItem i:ci) 
+                { 
+                        sessionFactory.getCurrentSession().delete(i); 
+                } 
+                return true; 
+        } catch (Exception e) { 
+                e.printStackTrace(); 
+                return false; 
+        } 
+}
+
 	//Cart CRUD
 	public boolean updateCart(Cart c){
 		try {
@@ -74,6 +82,7 @@ public class CartItemDAOImpl implements ICartItemDAO{
 			return false;
 		}
 	}
+	
 	public boolean deleteCart(int cartId){
 		try {
 			sessionFactory.getCurrentSession().delete(cartId);
@@ -83,4 +92,5 @@ public class CartItemDAOImpl implements ICartItemDAO{
 			return false;
 		}
 	}
+	
 }

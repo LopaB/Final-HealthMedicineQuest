@@ -3,16 +3,17 @@
 		<div class="col-md-12">
 		<!-- DataTable -->
 			<h2 style="color:">All Product Details</h2>
-			<div class="table-responsive">
-				<table id="myDataTable" class="table table-bordered table-striped">
+			<div class="table-responsive" style="overflow-x: hidden;">
+				<table id="myDataTable" class="table table-striped" style="overflow-x:hidden !important;">
 					<thead>
-						<th>Product Id</th>
-						<th>Product Name</th>
-						<th>Product Benefit</th>
-						<th>Price/Unit</th>
-						<th>Product Image</th>
-						<th>View Item</th>
-						<th>Add To Cart</th>
+						<th>     Product Id</th>
+						<th>     Product Name</th>
+						<th>     Product Benefit</th>
+						<th>     Product category</th>
+						<th>     Price/Unit</th>
+						<th>     Product Image</th>
+						<th>     View Item</th>
+					<!--  	<th> Add To Cart</th> -->
 					</thead>
 				</table>
 	<% /*  				<!-- Modal -->

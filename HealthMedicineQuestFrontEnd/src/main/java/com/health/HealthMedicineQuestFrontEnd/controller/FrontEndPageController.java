@@ -2,6 +2,8 @@ package com.health.HealthMedicineQuestFrontEnd.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,15 @@ public class FrontEndPageController {
 	
 	@Autowired
 	private IUserDAO userDAO;
-	
+	User user;
+	@Autowired
+	HttpSession session;
 	@RequestMapping(value={"/","/home","/index"})
-	public ModelAndView index(){
+	public ModelAndView index(Principal principal){
+		if(principal!=null){
+			user=userDAO.getUserByUserName(principal.getName());
+		}
+		session.setAttribute("user", user);	
 		ModelAndView model =new ModelAndView("page");
 		
 		model.addObject("title","Home");

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.health.HealthMedicineQuestBackEnd.model.Cart;
 import com.health.HealthMedicineQuestBackEnd.model.CartItem;
+import com.health.HealthMedicineQuestBackEnd.model.User;
 
 public interface ICartItemDAO {
 	// CartItem CRUD
@@ -13,8 +14,8 @@ public interface ICartItemDAO {
 	public boolean addCartItem(CartItem ci);
 	public boolean updateCartItem(CartItem ci);
 	public boolean deleteCartItem(int cartItemId);	
-	public boolean deleteAllCartItem(Cart c);
+	public boolean deleteAllCartItem(List<CartItem> ci);
 	//Cart CRUD
 	public boolean updateCart(Cart c);
-	public boolean deleteCart(int cartId);	
+	//public boolean deleteCart(int cartId);	
 }

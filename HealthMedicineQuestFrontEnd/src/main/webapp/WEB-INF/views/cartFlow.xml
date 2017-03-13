@@ -5,9 +5,9 @@
       http://www.springframework.org/schema/webflow/spring-webflow.xsd">
       
       <var name="billing" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
-      <var name="shipping" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
+      <var name="ship" class="com.health.HealthMedicineQuestBackEnd.model.Address"/>
 	 <var name="payment" class="com.health.HealthMedicineQuestBackEnd.model.Payment"/>
-     
+	       
 <!-- Executed when webFlow is triggered -->
 	<on-start>
 	<!-- registerHandler is java class available through annotated RegisterHandler.java class. -->
@@ -15,17 +15,11 @@
 	</on-start>
 
 	
-	<view-state id="start" view="billingCart" model="billing">
-	   <transition on="submit" to="shippingAddress"/>
-	  
-	</view-state>
-	
-	
 	<!-- User enters Billing Address -->
-	<view-state id="shippingAddress" view="shippingCart" model="shipping">
+	<view-state id="start" view="shippingCart" model="ship">
 	   <transition on="submit" to="pay"/>
 	   <on-exit>
-			<evaluate expression="cartHandler.saveShippingAddress(cartModel,shipping)"></evaluate>
+			<evaluate expression="cartHandler.saveShippingAddress(cartModel,ship)"></evaluate>
 		</on-exit>
 	</view-state>
 	
@@ -39,7 +33,6 @@
 	
 	<!-- User view order payment -->
 	<view-state id="invoice" view="invoice" model="flowScope.cartModel">
-	 
 		<transition on="submit" to="storedetail" />
 	   
 	</view-state>
@@ -51,7 +44,7 @@
 	</action-state>	
 	
  <end-state id="welcome" view="toHome" />	
-	<end-state id="toHome" view="externalRedirect:contextRelative:/cartview" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />
 	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
  
 	<!-- these events are available in every state-->

@@ -6,8 +6,10 @@
 			
 			<div class="limitWidth">
 			<div class="container">
+			<div class="row">
+			<div class="col-md-12" style="border:1px solid Gainsboro; border-radius:15px">
 			<h2>Our Story</h2>
-			<p>Established in 2017, what started as a small homeopathic retail outlet - Raj Pharmacy, 
+			<p>Established in 2007, what started as a small homeopathic retail outlet - Raj Pharmacy, 
 			is today a renowned Homeopathic Pharmacy in South Delhi.
 			</p>
 			<p>With an aim to provide the largest selection of 
@@ -18,10 +20,12 @@
 			 maintaining highest level of quality standards.
 			 </p>
 			 <p>With regard to our customers' ever increasing requirement of Homeopathic 
-			 and Ayurvedic Products and our aim to provide them with the best at their doorstep, we bring to you Healthmug. 
+			 and Ayurvedic Products and our aim to provide them with the best at their doorstep, we bring to you HealthMedicineQuest. 
 			 With a wide range of products and offers, HealthMedicineQuest will be your perfect healthcare companion, 
 			 at the click of a button and at the comfort of your home.
 			 </p>
+			 </div>
+			 </div>
 			 </div>
 			 </div>
 			

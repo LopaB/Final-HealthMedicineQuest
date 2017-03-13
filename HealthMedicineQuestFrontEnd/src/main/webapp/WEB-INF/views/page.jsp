@@ -34,7 +34,7 @@
 <script src="${js}/myapp.js"></script> 
     <style>
     	body {
- 
+  overflow-x: hidden;
   color: #5a5a5a;
   background-color:#F0F4F5;
 }

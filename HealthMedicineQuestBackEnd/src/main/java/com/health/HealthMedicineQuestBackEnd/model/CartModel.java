@@ -1,10 +1,9 @@
 package com.health.HealthMedicineQuestBackEnd.model;
 
 import java.io.Serializable;
-import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.health.HealthMedicineQuestBackEnd.dao.IAddressDAO;
 import com.health.HealthMedicineQuestBackEnd.dao.IUserDAO;
@@ -19,12 +18,22 @@ public class CartModel implements Serializable{
 	Address billingAddress;
 	Address shippingAddress;
 	Payment payment;
+	List<CartItem> cartItem;
 	
+	public List<CartItem> getCartItem() {
+		return cartItem;
+	}
+
+	public void setCartItem(List<CartItem> cartItem) {
+		this.cartItem = cartItem;
+	}
+
 	public Payment getPayment() {
 		return payment;
 	}
 
 	public void setPayment(Payment payment) {
+		System.out.println("setting payment address");
 		this.payment = payment;
 	}
 
@@ -33,15 +42,12 @@ public class CartModel implements Serializable{
 	}
 	
 	
-
-	public Address getBillingAddress(Principal p) {
-		//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User u=userDAO.getUserByUserName(p.getName());
-		this.billingAddress=addressDAO.getAddressByUser(u);
+	public Address getBillingAddress() {
+		
 		return billingAddress;
 	}
 	public void setBillingAddress(Address billingAddress) {
-		
+		System.out.println("setting shipping address");
 		this.billingAddress = billingAddress;
 	}
 	public Address getShippingAddress() {

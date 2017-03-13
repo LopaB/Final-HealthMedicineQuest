@@ -16,6 +16,7 @@ http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
     
     ">
    	
+   	
 	<!-- WebFlow Configuration -->
 	<webflow:flow-executor id="flowExecutor" />
         <webflow:flow-registry id="flowRegistry"
@@ -23,7 +24,7 @@ http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
                 <!-- here the id is mapped to invoke this flow -->
         <webflow:flow-location id="register" path="/memberShipFlow.xml" />
         <!-- Cart flow is starting from billing -->
-        <webflow:flow-location id="user/billing" path="/cartFlow.xml" />
+        <webflow:flow-location id="user/shipping" path="/cartFlow.xml" />
         </webflow:flow-registry>
         <webflow:flow-builder-services id="flowBuilderServices"
                 view-factory-creator="viewFactoryCreator" validator="validator"/>

@@ -22,10 +22,10 @@
   	<td><img src="${images}/${p.product.imageUrl}" width="70px" height="70px"/></td>
   	<td>${p.product.productName}</td>
   	<td>${p.quantity} 	</td>
-  	<td>&#8377; ${p.totalPrice} </td>
+  	<td>${p.product.productPrice}</td>
   	<c:set var="price" value="${price+p.totalPrice}"/>
-  	<td></td>
-  	<td><span class="glyphicon glyphicon-remove-sign" style="text-size:30px; color:crimson"></span></div></td>
+  	<td>&#8377; ${p.totalPrice}</td>
+  	<td><a href="${contextRoot}/user/delete/${p.cartItemId}/cartD"><span class="glyphicon glyphicon-remove-sign" style="text-size:30px; color:crimson"></span></a></td>
   	</tr>
   	</c:forEach>
   </table>
@@ -45,7 +45,7 @@
   <td></td>
   <td></td>
   <td><a href="${contextRoot}/user/products" class="btn btn-danger btn-lg">Continue Shopping</a> </td>
-  <td><a href="billing" class="btn btn-danger btn-lg">Place Order</button></td>
+  <td><a href="${contextRoot}/user/billing"  class="btn btn-danger btn-lg">Place Order</a></td>
   </tr>
   </table> 
   </div>

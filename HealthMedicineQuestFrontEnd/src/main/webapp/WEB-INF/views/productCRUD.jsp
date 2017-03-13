@@ -40,6 +40,19 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-md-12">
+						<label class="col-md-4 control-lable" for="productCategory">Product
+							Category</label>
+						<div class="col-md-7">
+							<form:input type="text" path="productCategory" id="productCategory"
+								class="form-control input-sm" />
+							<div class="has-error">
+								<form:errors path="productCategory" class="help-inline" style="color:red"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
 						<label class="col-md-4 control-lable" for="imageUrl">Upload Product Image</label>
 						<div class="col-md-7">
 							<form:input type="file" path="file" id="imageUrl"
@@ -76,7 +89,7 @@
 				</div>
 				 <div class="row">
             		<div class="form-actions floatRight">
-                		<input type="submit" name="action" value="Add" class="btn btn-primary btn-sm">
+                		<input type="submit" name="action" value="Add" class="btn btn-primary btn-lg">
             		</div>
         		</div>
 					
@@ -94,14 +107,15 @@
 				<table border="1" id="mycrudTable" class="table table-striped">
 					<tr>
 						<thead>
-						<th>Product Id</th>
-						<th>Product Name</th>
-						<th>Product Description</th>
-						<th>Product Price</th>
-						<th>Product Quantity</th>
-						<th>Image</th>
-						<th>Update</th>
-						<th>Delete<th>
+						<th> Product Id</th>
+						<th> Product Name</th>
+						<th> Product Description</th>
+						<th> Product Category</th>
+						<th> Product Price</th>
+						<th> Product Quantity</th>
+						<th> Image</th>
+						<th> Update</th>
+						<th> Delete<th>
 						</thead>
 					</tr>
 					

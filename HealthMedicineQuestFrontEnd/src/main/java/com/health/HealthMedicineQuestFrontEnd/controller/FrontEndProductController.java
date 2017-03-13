@@ -123,14 +123,6 @@ public class FrontEndProductController {
 				productDAO.updateProducts(product);
 				productResult=product;
 				break;
-			case "delete":
-				productDAO.deleteProducts(product.getProductId());
-				productResult=product;
-				break;
-			case "search":
-				Product searchedProduct=productDAO.getProduct(product.getProductId());
-				productResult=searchedProduct!=null?searchedProduct:new Product();
-				break;
 		}
 		ModelAndView model1 =new ModelAndView("page");
 		model1.addObject("title","Product Management");

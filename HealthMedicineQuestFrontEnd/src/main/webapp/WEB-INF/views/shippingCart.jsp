@@ -9,6 +9,7 @@
 <script>
 	window.menu='${title}';
 </script>
+<s:url value="/resources/images" var="images"/>
 <s:url value="/resources/css" var="css"/>
 <s:url value="/resources/js" var="js"/>
 <s:url value="/resources/jquery" var="jquery"/>
@@ -30,6 +31,17 @@
 
 <!-- Self coded js file -->
 <script src="${js}/myapp.js"></script> 
+<script>
+$(document).ready(function(){
+	$('#s').click(function() {
+	    if( $(this).is(':checked')) {
+	       $(".mydiv").hide();
+	    } else {
+	       $(".mydiv").show();
+	    }
+	});
+	});
+</script>
     <style>
     	body {
  
@@ -44,7 +56,7 @@
 <%@include file="registration/navbar.jsp"%>
 </div>
 	<div class=" row content form-container">
-		<form:form modelAttribute="shipping" >
+		<form:form modelAttribute="ship" >
 			<div class="col-md-3"></div>
 			<div class="panel col-md-6"
 				style="padding-bottom: 10px; border: 1px solid; background-color: #337ab7; color: white; border-color: #2e6da4;">
@@ -54,11 +66,11 @@
 					
 					<hr />
 					<div>
-						<input type="checkbox" name="shipping" value="Same as Billing Address" selected="true"/>
+						<input type="checkbox" id="s">Same as Billing Address</input>
 					</div>
 				</div>
-		<c:if test="${shipping}">
-				
+		
+				<div class="mydiv">
 					<!-- Text input-->
 					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
@@ -119,21 +131,15 @@
 						</div>
 
 					</div>
-					<!-- Text input-->
-					<div class="row form-group" style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
-						<div class="col-md-12">
-							<form:checkbox path="shipping" class="form-control input-md"/>Shipping address is same as billing.
-						</div>
-
-					</div>
+					
 					<div class="row form-group"
-						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12"></div>
 					</div>
-					
-			</c:if>
-			<div class=" row form-group"
-						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%"">
+					</div>
+			
+			<div class="row form-group"
+						style="padding-left: 10%; padding-right: 10%; padding-bottom: 2%">
 						<div class="col-md-12">
 							<input type="submit" name="_eventId_submit" value="Continue" class="btn btn-primary btn-md"/>
 						</div>

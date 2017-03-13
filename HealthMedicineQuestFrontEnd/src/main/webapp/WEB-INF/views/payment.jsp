@@ -10,6 +10,7 @@
 <script>
 	window.menu='${title}';
 </script>
+<s:url value="/resources/images" var="images"/>
 <s:url value="/resources/css" var="css"/>
 <s:url value="/resources/js" var="js"/>
 <s:url value="/resources/jquery" var="jquery"/>
@@ -40,12 +41,12 @@
 </style>
 </head>
 <body>
-<div class="container wrapper">
+<div class="wrapper">
 <div class="header">
 <%@include file="registration/navbar.jsp"%>
 </div>
 	
-<div class="content">
+<div class="container content">
        <div class="row">
              <div class="col-md-2"></div>
              <div class="col-md-8 col-centered" class="table-centered">
@@ -57,78 +58,83 @@
                                         <h3 style="margin-left: 20px;">Share your contact details</h3>
                                  </div>
                                  <br />
-                                 <div class="form-group">
+                                 <div class="form-group" style="padding-left:10px">
                                         <form:input path="email" type="text" placeholder="abc@xyz.com"
                                                class="form-control" style="width: 55%; display: inline" />
                                         <div class="has-error">
                                                <form:errors style="color:red" path="email" class="help-inline" />
-                                               <form:input type="text" placeholder="+919945678902"
-                                                     class="form-control" path="phone" maxlength="13" minlength="13"
+                                        </div>
+                                        <form:input type="text" placeholder="+919945678"
+                                                     class="form-control" path="phone" maxlength="10" minlength="10"
                                                      style="width: 35%; display: inline" />
-                                               <div class="has-error">
+                                         <div class="has-error">
                                                      <form:errors style="color:red" path="phone" class="help-inline" />
-                                               </div>
+                                         </div>
                                                
-                                               <div
-                                                     style="height: 50px; width: 100%; background: rgb(73, 186, 142); border-radius: 5px;">
+                                         <div style="height: 50px; width: 100%; background: rgb(73, 186, 142); border-radius: 5px;">
                                                      <h3 style="margin-left: 20px;">Payment Details</h3>
-                                               </div>
-                                               <br />
-
-                                               <div class="form-group">
-                                                     <label for="cno" style="color: gray">Card Number</label>
-                                                     <form:input type="text" class="form-control" path="cardNo"
+                                         </div>
+                                         <br />
+								</div>
+                                <div class="form-group">
+                                         <label for="cno" style="color: gray">Card Number</label>
+                                         <form:input type="text" class="form-control" path="cardNo"
                                                             placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16" minlength="16" />
-                                                     <div class="has-error">
-                                                            <form:errors style="color:red" path="cardNo"
+                                          <div class="has-error">
+                                               <form:errors style="color:red" path="cardNo"
                                                                    class="help-inline" />
-                                                     </div>
-                                                     <div class="form-group">
-                                                            <label for="name" style="color: gray">Name on the card</label>
-                                                            <form:input type="text" class="form-control" path="cardName"
+                                          </div>
+                                 </div>
+                                 <div class="form-group">
+                                          <label for="name" style="color: gray">Name on the card</label>
+                                             	<form:input type="text" class="form-control" path="cardName"
                                                                    placeholder="Name On The Card" />
-                                                            <div class="has-error">
-                                                                   <form:errors style="color:red" path="cardName"
+                                                  	<div class="has-error">
+                                                          <form:errors style="color:red" path="cardName"
                                                                           class="help-inline" />
-                                                            </div>
+                                                     </div>
+                                  </div>
 
-                                                            <div class="form-group">
-                                                                   <label for="mm" style="color: gray; display: inline">Expiry</label>
-                                                                   <label for="cvv" style="color: gray">CVV</label><br />
-                                                                   <form:input type="number" path="mm" min="1" max="12"
+                                  <div class="form-group">
+                                          <label for="mm" style="color: gray; display: inline">Expiry</label>
+                                          <label for="cvv" style="color: gray">CVV</label><br />
+                                          <form:input type="number" path="mm" min="1" max="12"
                                                                           class="form-control" id="mm"
                                                                           style="width: 65px; display: inline" maxlength="3"
                                                                           placeholder="mm" />
-                                                                   <div class="has-error">
-                                                                          <form:errors style="color:red" path="mm" class="help-inline" />
-                                                                          <form:input type="number" path="yy" min="2017" max="2027"
+                                           <div class="has-error">
+                                              <form:errors style="color:red" path="mm" class="help-inline" />
+                                       		</div>
+                                                                          
+                                            <form:input type="number" path="yy" min="2017" max="2027"
                                                                                 class="form-control" maxlength="4"
                                                                                 style="width: 75px; display: inline" placeholder="yy" />
-                                                                         <div class="has-error">
-                                                                                <form:errors style="color:red" path="yy" class="help-inline" />
-                                                                                <form:input type="text" path="cvv" minlength="3"
+                                                <div class="has-error">
+                                                        <form:errors style="color:red" path="yy" class="help-inline" />
+                                                </div>
+                                                   <form:input type="text" path="cvv" minlength="3"
                                                                                        maxlength="3" length="3" class="form-control"
                                                                                        style="width: 75px; display: inline" placeholder="CVV" />
-                                                                                <div class="has-error">
-                                                                                       <form:errors style="color:red" path="cvv"
+                                                        <div class="has-error">
+                                                               <form:errors style="color:red" path="cvv"
                                                                                              class="help-inline" />
-                                                                                </div>
+                                                         </div>
+                                                         </div>
 
 
-                                                                                <div class="form-group">
-                                                                                       <input type="submit" name="_eventId_submit" value="Make Payment"
+                                                         <div class="form-group">
+                                                              <input type="submit" name="_eventId_submit" value="Make Payment"
                                                                                              class="btn btn-danger" /> 
-                                                                                             <a href="${contextRoot}/index"
+                                                            <a href="${contextRoot}/index"
                                                                                              class="btn btn-md- btn-info">Back</a>
-                                                                                </div>
+                                                          </div>
                                                                                 <br />
                                                                                 <br />
                                                                                 <br />
                                                                                 <br />
-                                                                                <div class="form-group">
-                                                                                       <p style="color: gray">By clicking on 'Make Payment'
-                                                                                             you are agreeing to terms and conditions .</p>
-                                                                                </div>
+                                                    <div class="form-group">
+                                           <p style="color: gray">By clicking on 'Make Payment' you are agreeing to terms and conditions .</p>
+                                                  </div>
                            </form:form>
                     </div>
              </div>

@@ -30,14 +30,20 @@ public class Payment implements Serializable
 	}
        @Email
        private String email;
-       @Size(min=1, max=30,message="user mobile number should be between 1 to 13 characters long")
+       @Size(min=1, max=10,message="Enter 10 digits phone number")
        private String phone;
-       @Size(min=16, max=16,message="user card number should be 16 characters long")
+       @Size(min=1, max=16,message="user card number should be 16 characters long")
        private String cardNo;
        @Size(min=3, max=3,message="user cvv should be 3 characters long")
        private String cvv;
-       @CreditCardNumber
-       private String cardName;
+       private int totalPayment=0;
+       public int getTotalPayment() {
+		return totalPayment;
+	}
+	public void setTotalPayment(int totalPayment) {
+		this.totalPayment = totalPayment;
+	}
+	private String cardName;
        
        @OneToOne(cascade=CascadeType.ALL)
        private User user;
@@ -48,11 +54,9 @@ public class Payment implements Serializable
        public void setUser(User user) {
              this.user = user;
        }
-       @Min(value=01)
-       @Max(value=12)
+      
        private int mm;
-       @Min(value=17)
-       @Max(value=25)
+      
        private int yy;
 
        public int getPaymentId() {

@@ -27,16 +27,15 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//for autonumber
 	int productId;
 	@NotBlank(message="Can not leave this field witout entering any Product Name")
-	@Size(min=3,message="Product Name must be greater than 3 character")
 	String productName;
 	@NotEmpty(message="Can not leave this field witout entering any Product Description")
-	@Size(min=10, message="Product Name must be greater than 10 characters")
 	String productDescription;
 	@Range(min=1,message="Product Price value must be greater than 1")
 	int productPrice;
 	@Range(min=0, max=200, message="Product Quantity must be within 0 and 200")
 	int productQuantity;
-	
+	@NotEmpty(message="Can not leave this field witout entering any Product Category")
+	String productCategory;
 	String imageUrl;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -52,6 +51,12 @@ public class Product implements Serializable {
 	}
 	public int getProductId() {
 		return productId;
+	}
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
 	}
 	public void setProductId(int productId) {
 		this.productId = productId;
@@ -86,12 +91,13 @@ public class Product implements Serializable {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public Product(int productId, String productName, String productDescription, int productPrice,
+	public Product(int productId, String productName, String productDescription,String productCategory, int productPrice,
 			int productQuantity, String imageUrl) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productDescription = productDescription;
+		this.productCategory=productCategory;
 		this.productPrice = productPrice;
 		this.productQuantity = productQuantity;
 		this.imageUrl=imageUrl;
