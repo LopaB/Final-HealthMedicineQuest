@@ -18,7 +18,7 @@ ajax: {
         },
         {data: null,
              mRender: function ( data, type, row ) {
-                return '<a href="#" role="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#'+row.productId+'"><span class="glyphicon glyphicon-edit"></span></a>';}
+                return '<a href="/HealthMedicineQuestFrontEnd/admin/update/'+row.productId+'" role="button" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-edit"></span></a>';}
         },
         {data: null,
              mRender: function ( data, type, row ) {

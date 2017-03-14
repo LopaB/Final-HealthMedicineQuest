@@ -55,6 +55,7 @@
        	<artifactId>hibernate-validator</artifactId>
         <version>${hibernate.validator.version}</version>
         </dependency>
+        <!-- Webflow -->
     <dependency>
         	<groupId>org.springframework.webflow</groupId>
         	<artifactId>spring-webflow</artifactId>

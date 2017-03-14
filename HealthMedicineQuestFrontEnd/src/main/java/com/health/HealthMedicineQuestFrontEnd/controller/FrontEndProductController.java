@@ -65,6 +65,16 @@ public class FrontEndProductController {
 		return model;
 	}
 	
+	@RequestMapping("/admin/update/{productId}")
+    public ModelAndView update(@PathVariable("productId") int id) {
+                   ModelAndView model = new ModelAndView("productUpdate");
+                   Product product=productDAO.getProduct(id);
+                  
+                   model.addObject("product",product);
+                  
+                   return model;
+    }
+
 	@RequestMapping("/delete/{productId}/productD")
     public ModelAndView delete(@PathVariable("productId") int id) {
                    ModelAndView model = new ModelAndView("page");
@@ -75,8 +85,6 @@ public class FrontEndProductController {
                    model.addObject("userClickProductCRUD", true);
                    return model;
     }
-
-
 	
 	@RequestMapping(value={"/user/{productId}/singleproduct"})
 	public ModelAndView product(@PathVariable("productId")int id){
@@ -120,6 +128,9 @@ public class FrontEndProductController {
 				productResult=product;
 				break;
 			case "update":
+				if(!(product.getFile().getOriginalFilename().equals(""))){
+					product.setImageUrl(uploadImage(product.getFile()));
+				}
 				productDAO.updateProducts(product);
 				productResult=product;
 				break;
