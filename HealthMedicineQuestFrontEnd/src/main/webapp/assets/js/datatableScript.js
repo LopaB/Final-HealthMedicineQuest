@@ -10,7 +10,13 @@ ajax: {
         { data: 'productName' },
         { data: 'productDescription' },
         { data: 'productCategory' },
-        { data: 'productPrice' },
+        { "data": "",
+            "render":function(data,type,row)
+            {
+             return "&#8377; "+row.productPrice+"";
+          }  
+          
+          },
         { data: null,
             mRender: function ( data, type, row ) {
                return '<img src="/HealthMedicineQuestFrontEnd/resources/images/'+ row.imageUrl +'" height="50" width="50">'; }

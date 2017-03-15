@@ -33,7 +33,7 @@ public class CartHandler {
 	public CartModel initializeModel(){
 		 user=(User)session.getAttribute("user");
 		 cartModel=new CartModel();
-		 cartModel.setBillingAddress(addressDAO.getAddressByUser(user));
+		 cartModel.setBillingAddress(addressDAO.getAddress(user.getUserId()));
 		 cartModel.setCartItem(cartItemDAO.getAllCartItem(user.getCart()));
 		return cartModel;
 
@@ -54,7 +54,7 @@ public class CartHandler {
 
 	public void savePayment(CartModel cartModel,Payment payment){
 		payment.setUser(user);
-		 c=user.getCart();
+		c=cartModel.getCartItem().get(0).getCart();
 		payment.setTotalPayment(c.getGrandTotal());
 		cartModel.setPayment(payment);
 		System.out.println("payment object created");
@@ -69,9 +69,9 @@ public class CartHandler {
 			 addressDAO.addAddress(a);
 		}
 		
-		// Cart c=user.getCart();
-		
+		 c=cartModel.getCartItem().get(0).getCart();
 		Payment p=cartModel.getPayment();
+		 p.setTotalPayment(c.getGrandTotal());
 		paymentDAO.addPayment(p);
 		
 		cartItemDAO.deleteAllCartItem(cartItemDAO.getAllCartItem(c));

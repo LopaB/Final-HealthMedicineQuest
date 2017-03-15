@@ -37,7 +37,7 @@ public class FrontEndCartController {
 		ModelAndView model=new ModelAndView("billingCart");
 		
 		user=userDAO.getUserByUserName(principal.getName());
-		model.addObject("billing", addressDAO.getAddressByUser(user));
+		model.addObject("billing", addressDAO.getAddress(user.getUserId()));
 		return model;
 	}
 

@@ -10,7 +10,15 @@ ajax: {
         { data: 'productName' },
         { data: 'productDescription' },
         { data: 'productCategory' },
-        { data: 'productPrice' },
+        { "data": "",
+            "render":function(data,type,row)
+            {
+             return "&#8377; "+row.productPrice+"";
+          }  
+          
+          },
+
+
         { data: 'productQuantity' },
         { data: null,
             mRender: function ( data, type, row ) {

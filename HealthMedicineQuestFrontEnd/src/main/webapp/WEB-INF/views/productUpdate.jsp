@@ -64,7 +64,7 @@ $(document).ready(function(){
 		<div class="col-md-6">
 		<div class="form-container">
 		<h1>Product Data</h1>
-			
+			<form:hidden path="productId"/>
 
 				<div class="row">
 					<div class="form-group col-md-12">

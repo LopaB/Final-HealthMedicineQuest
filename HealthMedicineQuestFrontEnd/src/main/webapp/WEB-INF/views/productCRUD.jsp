@@ -103,8 +103,8 @@
 				<div class="container">
 				<div class="row">
 				<div class="col-md-12">
-				<div>
-				<table border="1" id="mycrudTable" class="table table-striped">
+				<div class="table-responsive">
+				<table id="mycrudTable" class="table table-striped">
 					<tr>
 						<thead>
 						<th> Product Id</th>

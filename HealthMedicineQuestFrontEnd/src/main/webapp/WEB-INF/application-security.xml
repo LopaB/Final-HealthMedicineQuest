@@ -21,8 +21,7 @@
 			authentication-failure-url="/login?error" />
 		<logout logout-success-url="/" />
 		<csrf disabled="true" />
-		<!--this is to avoid redirecting to other websites (cross site request 
-			forgery) -->
+		<!--this is to avoid redirecting to other websites (cross site request forgery) -->
 	</http>
 
 	<authentication-manager>
@@ -33,7 +32,7 @@
 				users-by-username-query="SELECT username, password, enabled FROM user WHERE username = ?"
 				authorities-by-username-query="SELECT username, role FROM user WHERE username = ?" />
 		</authentication-provider>
-		<!--name of the bean has to be renamed to dataSource -->
+		
 	</authentication-manager>
 
 
