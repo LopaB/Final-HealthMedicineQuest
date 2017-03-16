@@ -22,8 +22,8 @@ public class AddressDAOImpl implements IAddressDAO{
 	public Address getAddress(int id){
 		return sessionFactory.getCurrentSession().get(Address.class,Integer.valueOf(id));
 	}
-	public List<Address> getAddressByUser(User user){
-		return sessionFactory.getCurrentSession().createQuery("from Address where user=:user").setParameter("user",user).getResultList();
+	public Address getAddressByUser(User user){
+		return (Address)sessionFactory.getCurrentSession().createQuery("from Address where user=:user").setParameter("user",user).getResultList().get(0);
 	}
 	public boolean addAddress(Address a){
 		try {

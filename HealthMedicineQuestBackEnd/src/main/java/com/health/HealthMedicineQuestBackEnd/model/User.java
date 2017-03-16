@@ -30,7 +30,7 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int userId;
-	@Size(min=1, max=30,message="Please enter first name")
+	@Size(min=1, max=30,message="Please enter user name")
 	String userName;
 	@Size(min=1, max=30,message="Please enter password")
 	String password;

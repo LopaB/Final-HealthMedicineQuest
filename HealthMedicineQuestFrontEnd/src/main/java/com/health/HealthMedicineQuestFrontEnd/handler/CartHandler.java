@@ -28,12 +28,13 @@ public class CartHandler {
 	@Autowired
 	HttpSession session;
 	CartModel cartModel;
+	@Autowired
 	User user;
 	Cart c;
 	public CartModel initializeModel(){
 		 user=(User)session.getAttribute("user");
 		 cartModel=new CartModel();
-		 cartModel.setBillingAddress(addressDAO.getAddress(user.getUserId()));
+		 cartModel.setBillingAddress(addressDAO.getAddressByUser(user));
 		 cartModel.setCartItem(cartItemDAO.getAllCartItem(user.getCart()));
 		return cartModel;
 
@@ -71,7 +72,7 @@ public class CartHandler {
 		
 		 c=cartModel.getCartItem().get(0).getCart();
 		Payment p=cartModel.getPayment();
-		 p.setTotalPayment(c.getGrandTotal());
+		// p.setTotalPayment(c.getGrandTotal());
 		paymentDAO.addPayment(p);
 		
 		cartItemDAO.deleteAllCartItem(cartItemDAO.getAllCartItem(c));
